@@ -8,8 +8,8 @@
         /// <summary>
         /// Builds the <see cref="IHelpProvider"/> for this source.
         /// </summary>
-        /// <param name="builder">The <see cref="IHelpInfoBuilder"/>.</param>
+        /// <param name="builder">The <see cref="IHelpBuilder"/>.</param>
         /// <returns>An <see cref="IHelpProvider"/>.</returns>
-        IHelpProvider Build(IHelpInfoBuilder builder);
+        IHelpProvider Build(IHelpBuilder builder);
     }
 }

@@ -3,12 +3,12 @@
 namespace Helpm8
 {
     /// <summary>
-    /// Concept of the root of an <see cref="IHelpInfo"/> hierarchy for an application.
+    /// Concept of the root of an <see cref="IHelp"/> hierarchy for an application.
     /// </summary>
-    public interface IHelpInfoRoot : IHelpInfo
+    public interface IHelpRoot : IHelp
     {
         /// <summary>
-        /// Loads all help info values fro the underlying <see cref="IHelpProvider"/>s.
+        /// Loads all help values from the underlying <see cref="IHelpProvider"/>s.
         /// </summary>
         void Load();
 

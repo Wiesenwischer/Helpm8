@@ -20,9 +20,9 @@ namespace Helpm8
         IList<IHelpSource> Sources { get; }
 
         /// <summary>
-        /// Builds an <see cref="IHelpInfo"/> with keys and values from the set of sources registered in <see cref="Sources"/>.
+        /// Builds an <see cref="IHelp"/> with keys and values from the set of sources registered in <see cref="Sources"/>.
         /// </summary>
-        /// <returns>An <see cref="IHelpInfoRoot"/> with keys ans values from the registered sources.</returns>
-        IHelpInfoRoot Build();
+        /// <returns>An <see cref="IHelpRoot"/> with keys ans values from the registered sources.</returns>
+        IHelpRoot Build();
     }
 }
