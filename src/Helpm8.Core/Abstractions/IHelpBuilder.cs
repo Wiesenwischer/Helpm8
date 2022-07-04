@@ -5,19 +5,19 @@ namespace Helpm8
     /// <summary>
     /// Concept of a builder to build help infos for an application.
     /// </summary>
-    public interface IHelpInfoBuilder
+    public interface IHelpBuilder
     {
         /// <summary>
         /// Adds a new source to retrieve help infos from.
         /// </summary>
         /// <param name="source">The source to add.</param>
-        /// <returns>The same <see cref="IHelpInfoBuilder"/> to provide a fluent api for adding sources.</returns>
-        IHelpInfoBuilder Add(IHelpInfoSource source);
+        /// <returns>The same <see cref="IHelpBuilder"/> to provide a fluent api for adding sources.</returns>
+        IHelpBuilder Add(IHelpSource source);
 
         /// <summary>
         /// Gets the sources used to retrieve help info values.
         /// </summary>
-        IList<IHelpInfoSource> Sources { get; }
+        IList<IHelpSource> Sources { get; }
 
         /// <summary>
         /// Builds an <see cref="IHelpInfo"/> with keys and values from the set of sources registered in <see cref="Sources"/>.

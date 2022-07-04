@@ -8,13 +8,13 @@ namespace Helpm8
     public interface IHelpInfoRoot : IHelpInfo
     {
         /// <summary>
-        /// Loads all help info values fro the underlying <see cref="IHelpInfoProvider"/>s.
+        /// Loads all help info values fro the underlying <see cref="IHelpProvider"/>s.
         /// </summary>
         void Load();
 
         /// <summary>
-        /// The <see cref="IHelpInfoProvider"/>s for these help infos.
+        /// The <see cref="IHelpProvider"/>s for these help infos.
         /// </summary>
-        IEnumerable<IHelpInfoProvider> Providers { get; }
+        IEnumerable<IHelpProvider> Providers { get; }
     }
 }
