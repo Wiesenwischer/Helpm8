@@ -4,6 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
+	<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 </Project>
