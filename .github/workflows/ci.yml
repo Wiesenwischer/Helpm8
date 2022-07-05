@@ -53,7 +53,7 @@ jobs:
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}      
     - name: Package nuget
-      run: dotnet pack ./src.Helpm8.sln --configuration Release -o:package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
+      run: dotnet pack ./src/Helpm8.sln --configuration Release -o:package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
     - name: Push nuget to GitHub
       run: dotnet nuget push ./package/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ github.token }}
 
