@@ -63,7 +63,7 @@ jobs:
       id: test-results
       if: always()
       with:
-        files: "TestResults/**/*.xml"
+        files: "TestResults/**/*.trx"
     - name: Set badge color
       shell: bash
       run: |
