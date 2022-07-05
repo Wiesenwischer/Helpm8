@@ -60,7 +60,7 @@ jobs:
 
     - name: Report test results
       uses: zyborg/dotnet-tests-report@v1
-      if: ${{ (needs.rules.outputs.branch_name == 'main')
+      if: ${{ (needs.rules.outputs.branch_name == 'main') }}
       with:
         project_path: ./src/Helpm8.Core.Tests
         report_name: Helpm8.Core_tests
