@@ -3,10 +3,10 @@
     /// <summary>
     /// Provides help info key/values for an application.
     /// </summary>
-    public interface IHelpInfoProvider
+    public interface IHelpProvider
     {
         /// <summary>
-        /// Loads help info values from the source represented by this <see cref="IHelpInfoProvider"/>.
+        /// Loads help info values from the source represented by this <see cref="IHelpProvider"/>.
         /// </summary>
         void Load();
 

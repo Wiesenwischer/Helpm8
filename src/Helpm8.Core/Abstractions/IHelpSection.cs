@@ -1,12 +1,12 @@
 ﻿namespace Helpm8
 {
     /// <summary>
-    /// Concept of a section of help infos.
+    /// Concept of a section of help values.
     /// </summary>
     /// <remarks>
-    /// A section of help infos can group related values together, e.g. all help info values to a specific input form or page.
+    /// A section of help values can group related values together, e.g. all help values to a specific input form or page.
     /// </remarks>
-    public interface IHelpInfoSection : IHelpInfo
+    public interface IHelpSection : IHelp
     {
         /// <summary>
         /// Gets the key this section has in its parent.
