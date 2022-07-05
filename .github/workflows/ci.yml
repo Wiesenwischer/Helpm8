@@ -61,7 +61,7 @@ jobs:
     - name: Report test results
       uses: zyborg/dotnet-tests-report@v1
       with:
-        project_path: Helpm8.Core.Tests
+        project_path: ./src/Helpm8.Core.Tests
         report_name: Helpm8.Core_tests
         report_title: Helpm8.Core Tests
         github_token: ${{ secrets.GITHUB_TOKEN }}
