@@ -2,9 +2,9 @@ name: Helpm8-ci
 
 on:
   push:
-    branches: [ "feature/gitversion" ]
+    branches: [ "main", "feature/*" ]
   pull_request:
-    branches: [ "feature/gitversion" ]
+    branches: [ "main" ]
 
 jobs:
   build:
