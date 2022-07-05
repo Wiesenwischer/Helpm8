@@ -9,14 +9,10 @@
 		<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
 		<Owners>Marcus Dammann, Stefan Vogelsang</Owners>
 		<Description>An online help framework to implement runtime guidance to your apps.</Description>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<Copyright>Copyright 2022</Copyright>
 		<ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Include="..\..\LICENSE" Link="LICENSE" Pack="true" PackagePath=""/>
-	</ItemGroup>
 
 </Project>
