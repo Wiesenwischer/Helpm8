@@ -6,6 +6,7 @@
     <RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
 	<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
+	<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
   </PropertyGroup>
 
 </Project>

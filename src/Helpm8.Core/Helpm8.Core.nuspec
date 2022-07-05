@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/Wiesenwischer/Helpm8/blob/main/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Wiesenwischer/Helpm8</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <tags>help guidance framework dotnet</tags>
+  </metadata>
+</package>
