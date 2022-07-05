@@ -9,8 +9,8 @@
 	<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
     <Owners>Marcus Dammann, Stefan Vogelsang</Owners>
 	<Description>An online help framework to implement runtime guidance to your apps.</Description>
-	<PackageLicenseFile>D:\proj\Helpm8\LICENSE</PackageLicenseFile>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
