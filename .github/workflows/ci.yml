@@ -3,8 +3,8 @@ name: Helpm8-ci
 on:
   push:
     branches: [ "main", "feature/*" ]
-  # pull_request:
-  #   branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
