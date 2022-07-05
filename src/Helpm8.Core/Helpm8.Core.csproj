@@ -1,16 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-    <RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
-	<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
-    <Owners>Marcus Dammann, Stefan Vogelsang</Owners>
-	<Description>An online help framework to implement runtime guidance to your apps.</Description>
-	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Nullable>enable</Nullable>
+		<RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
+		<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
+		<Owners>Marcus Dammann, Stefan Vogelsang</Owners>
+		<Description>An online help framework to implement runtime guidance to your apps.</Description>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Copyright>Copyright 2022</Copyright>
+		<ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\LICENSE" Link="LICENSE" Pack="true" PackagePath=""/>
+	</ItemGroup>
 
 </Project>
