@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./src/Help8m.sln
+      run: dotnet restore ./src/Helpm8.sln
     - name: Build
-      run: dotnet build ./src/Help8m.sln --no-restore --configuration Realease
+      run: dotnet build ./src/Helpm8.sln --no-restore --configuration Realease
     - name: Test
       run: dotnet test --no-build --verbosity normal
