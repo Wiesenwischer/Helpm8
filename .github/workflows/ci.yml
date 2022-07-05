@@ -1,4 +1,4 @@
-name: .NET
+name: Helpm8-ci
 
 on:
   push:
