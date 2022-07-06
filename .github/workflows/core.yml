@@ -10,6 +10,7 @@ on:
       - src/libraries/Helpm8.Core/**"
       - src/libraries/Helpm8.Core.Tests/**"
       - .github/workflows/core.yml
+      - .github/workflows/composite/**
 
   pull_request:
     branches:
@@ -19,6 +20,7 @@ on:
       - src/libraries/Helpm8.Core/**"
       - src/libraries/Helpm8.Core.Tests/**"
       - .github/workflows/core.yml
+      - .github/workflows/composite/**
 
 jobs:
 
