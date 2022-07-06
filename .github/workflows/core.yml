@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - code-coverage
 
     paths:
       - src/libraries/Helpm8.Core/**
