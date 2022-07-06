@@ -32,7 +32,7 @@ runs:
         cd -
         cd ${{ inputs.tests_path }}
         dotnet build --no-restore
-        dotnet test --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+        dotnet test --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.info /p:CoverletOutputFormat=lcov
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
