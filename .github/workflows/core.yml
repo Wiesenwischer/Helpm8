@@ -7,8 +7,8 @@ on:
       - main
 
     paths:
-      - src/libraries/Helpm8.Core/**"
-      - src/libraries/Helpm8.Core.Tests/**"
+      - src/libraries/Helpm8.Core/**
+      - src/libraries/Helpm8.Core.Tests/**
       - .github/workflows/core.yml
       - .github/workflows/composite/**
 
@@ -17,8 +17,8 @@ on:
       - main
 
     paths:
-      - src/libraries/Helpm8.Core/**"
-      - src/libraries/Helpm8.Core.Tests/**"
+      - src/libraries/Helpm8.Core/**
+      - src/libraries/Helpm8.Core.Tests/**
       - .github/workflows/core.yml
       - .github/workflows/composite/**
 
