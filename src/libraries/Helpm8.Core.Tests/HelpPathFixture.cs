@@ -39,5 +39,11 @@ namespace Helpm8.Core.Tests
             Assert.Equal(":", HelpPath.GetParentPath("::key"));
             Assert.Equal("parent", HelpPath.GetParentPath("parent:key"));
         }
+
+        [Fact]
+        public void ShouldFailForTestingCanPRe()
+        {
+            Assert.True(false);
+        }
     }
 }
