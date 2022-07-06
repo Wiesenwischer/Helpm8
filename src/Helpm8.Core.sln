@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core", "Helpm8.Core\Helpm8.Core.csproj", "{1A14CFD4-4885-40C7-8F75-DEF477D11164}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core", "libraries\Helpm8.Core\Helpm8.Core.csproj", "{1A14CFD4-4885-40C7-8F75-DEF477D11164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core.Tests", "Helpm8.Core.Tests\Helpm8.Core.Tests.csproj", "{618269DA-3CAA-4040-B789-C6779D740277}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core.Tests", "libraries\Helpm8.Core.Tests\Helpm8.Core.Tests.csproj", "{618269DA-3CAA-4040-B789-C6779D740277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
