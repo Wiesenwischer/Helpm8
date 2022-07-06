@@ -37,7 +37,7 @@ runs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
-        path-to-lcov: ${{ inputs.tests_path}}/TestResults/coverage.info
+        path-to-lcov: src/${{ inputs.tests_path}}/TestResults/coverage.info
       
 
 
