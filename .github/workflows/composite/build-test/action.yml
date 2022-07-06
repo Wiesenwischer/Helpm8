@@ -6,10 +6,10 @@ inputs:
     description: "Version of dotnet to use for testing"
     required: true
   project_path:
-    description: "Path to project to test e.g. src/libraries/Helpm8.Core"
+    description: "Path to project to test e.g. libraries/Helpm8.Core"
     required: true
   tests_path:
-    description: "Path to test project e.g. src/libraries/Helpm8.Core.Tests"
+    description: "Path to test project e.g. libraries/Helpm8.Core.Tests"
     required: true
 
 runs:
