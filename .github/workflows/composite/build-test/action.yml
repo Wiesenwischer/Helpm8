@@ -1,0 +1,35 @@
+name: "Build for PRe"
+description: "Builds a package and runs unit tests without pushing"
+
+inputs:
+  dotnet_version:
+    description: "Version of dotnet to use for testing"
+    required: true
+  project_path:
+    description: "Path to project to test e.g. src/libraries/Helpm8.Core"
+    required: true
+  tests_path:
+    description: "Path to test project e.g. src/libraries/Helpm8.Core.Tests"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ inputs.dotnet_version }}
+    - name: Build and run unit tests
+      shell: bash
+      run: |
+        cd src
+        dotnet restore "Libraries.sln"
+        cd ${{ inputs.project_path }}
+        dotnet build --no-restore
+        cd -
+        cd ${{ inputs.tests_path }}
+        dotnet build --no-restore
+        dotnet test --no-build -v=normal      
+
+
+
