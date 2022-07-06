@@ -10,7 +10,8 @@ namespace Helpm8
             throw new NotImplementedException();
         }
 
-        public IList<IHelpSource> Sources { get; }
+        public IList<IHelpSource> Sources { get; } = new List<IHelpSource>();
+        
         public IHelpRoot Build()
         {
             throw new NotImplementedException();
@@ -37,7 +38,7 @@ namespace Helpm8
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IHelpProvider> Providers { get; }
+        public IEnumerable<IHelpProvider> Providers { get; } = new List<IHelpProvider>();
         public void Dispose()
         {
             throw new NotImplementedException();
