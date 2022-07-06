@@ -11,6 +11,9 @@ inputs:
   tests_path:
     description: "Path to test project e.g. libraries/Helpm8.Core.Tests"
     required: true
+  github_token:
+    description: "Token used to access github for uploading coverage report"
+    required: true
 
 runs:
   using: "composite"
@@ -33,7 +36,7 @@ runs:
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ inputs.GITHUB_TOKEN }}
         path-to-lcov: ${{ inputs.tests_path}}/TestResults/coverage.info
       
 
