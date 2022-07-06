@@ -31,7 +31,7 @@ runs:
         dotnet build --no-restore
         dotnet test --no-build -v=normal   
       # Use always() to always run this step to publish test results when there are test failures
-      if: ${{ always() }}      
+      if: always()
       
 
 
