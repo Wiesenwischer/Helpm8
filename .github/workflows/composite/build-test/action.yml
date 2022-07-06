@@ -41,7 +41,8 @@ runs:
     - name: Include coverage report in PRe
       uses: romeovs/lcov-reporter-action@v0.2.16
       with:
-        lcov-file: src/${{ inputs.tests_path}}/TestResults/coverage.info      
+        github-token: ${{ inputs.GITHUB_TOKEN }}     
+        lcov-file: src/${{ inputs.tests_path}}/TestResults/coverage.info
       
 
 
