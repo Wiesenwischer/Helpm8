@@ -19,9 +19,9 @@ namespace Helpm8
             {
                 if (_disposed)
                 {
-                    // Return a non-reference-counting ReferenceCountedProviders instance now that the ConfigurationManager is disposed.
+                    // Return a non-reference-counting ReferenceCountedProviders instance now that the HelpManager is disposed.
                     // We could preemptively throw an ODE instead, but this might break existing apps that were previously able to
-                    // continue to read configuration after disposing an ConfigurationManager.
+                    // continue to read help after disposing an HelpManager.
                     return ReferenceCountedProviders.CreateDisposed(_refCountedProviders.NonReferenceCountedProviders);
                 }
 

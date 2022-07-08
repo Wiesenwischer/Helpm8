@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Helpm8
 {
@@ -26,17 +26,31 @@ namespace Helpm8
             int prefixLength = (makePathsRelative && help is IHelpSection rootSection) ? rootSection.Path.Length + 1 : 0;
             while (stack.Count > 0)
             {
-                IHelp config = stack.Pop();
+                IHelp poppedHelp = stack.Pop();
                 // Don't include the sections value if we are removing paths, since it will be an empty key
-                if (config is IHelpSection section && (!makePathsRelative || config != help))
+                if (poppedHelp is IHelpSection section && (!makePathsRelative || poppedHelp != help))
                 {
                     yield return new KeyValuePair<string, string?>(section.Path.Substring(prefixLength), section.Value);
                 }
-                foreach (IHelpSection child in config.GetChildren())
+                foreach (IHelpSection child in poppedHelp.GetChildren())
                 {
                     stack.Push(child);
                 }
             }
+        }
+
+        /// <summary>
+        /// Determines whether the section has a <see cref="IHelpSection.Value"/> or has children
+        /// </summary>
+        /// <param name="section">The section to enumerate.</param>
+        /// <returns><see langword="true" /> if the section has values or children; otherwise, <see langword="false" />.</returns>
+        public static bool Exists([NotNullWhen(true)] this IHelpSection? section)
+        {
+            if (section == null)
+            {
+                return false;
+            }
+            return section.Value != null || section.GetChildren().Any();
         }
     }
 }
