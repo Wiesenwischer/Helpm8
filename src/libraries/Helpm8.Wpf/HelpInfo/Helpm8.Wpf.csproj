@@ -14,14 +14,14 @@
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
     <RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
-	  <RepositoryType>git</RepositoryType>
-	  <Authors>Marcus Dammann, Stefan Vogelsang, René Viermann</Authors>
-	  <Owners>Marcus Dammann, Stefan Vogelsang, René Viermann</Owners>
-	  <Description>An online help framework to implement runtime guidance to your apps.</Description>
-	  <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-	  <Copyright>Copyright 2022</Copyright>
-	  <ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <Authors>Marcus Dammann, Stefan Vogelsang, René Viermann</Authors>
+    <Owners>Marcus Dammann, Stefan Vogelsang, René Viermann</Owners>
+    <Description>An online help framework to implement runtime guidance to your apps.</Description>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2022</Copyright>
+    <ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,13 +57,20 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Converters\BorderThicknessToContainerMarginConverter.cs" />
+    <Compile Include="Controls\Converters\BorderThicknessToInnerPolygonTransform.cs" />
+    <Compile Include="Controls\Converters\ContentDefaultTemplateIfNullConverter.cs" />
+    <Compile Include="Controls\Converters\IsNullConverter.cs" />
+    <Compile Include="Controls\Converters\PlacementToAlignmentConverter.cs" />
+    <Compile Include="Controls\Converters\PlacementToVisibilityConverter.cs" />
+    <Compile Include="Controls\Converters\ThicknessToStrokeThickness.cs" />
     <Compile Include="HelpInfo.cs" />
+    <Compile Include="Models\HelpInformation.cs" />
     <Compile Include="TextLocalization.cs" />
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Controls\Converters.cs" />
     <Compile Include="Controls\HelpInfoControl.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Helpm8WpfSample"
-        xmlns:helpm8="clr-namespace:HelpInfo;assembly=HelpInfo"
+        xmlns:helpm8 = "clr-namespace:Helpm8.Wpf;assembly=HelpInfo"
         mc:Ignorable="d"
         Title="Helpm8 sample" Height="200" Width="400">
     <Grid>

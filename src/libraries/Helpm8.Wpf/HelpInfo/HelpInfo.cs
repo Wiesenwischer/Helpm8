@@ -1,9 +1,11 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using Helpm8.Wpf.Models;
 using Helpm8.Wpf.Controls;
 
 
@@ -11,7 +13,6 @@ namespace Helpm8.Wpf
 {
     public class HelpInfo
     {
-
         public static string GetHelpm8Text(DependencyObject obj)
         {
             return (string)obj.GetValue(Helpm8TextProperty);
@@ -31,22 +32,29 @@ namespace Helpm8.Wpf
 
             if (d is UIElement uiElement)
             {
-                var test = new HelpInfoControl();
-                test.Header = "Erster Header";
-                test.Content = "e.NewValue as string";
-                test.Placement = Placement.Center;
-
                 var textblock = new TextBlock();
                 textblock.Text = e.NewValue as string;
-                textblock.Background = Brushes.LightBlue;
-                textblock.Foreground = Brushes.Black;
+                textblock.Background = Brushes.White;
+                textblock.Foreground = Brushes.White;
+
+                var helpInformation = new HelpInformation()
+                {
+                    Header = "Bin dein Header",
+                    Content = e.NewValue
+                };
+
+
+                var hiControl = new HelpInfoControl();
+
+
 
                 var popup = new Popup();
                 popup.AllowsTransparency = true;
-                popup.Child = test;
-                //(popup.Child as FrameworkElement).DataContext = test;
+                popup.Child = hiControl;
+                (popup.Child as FrameworkElement).DataContext = helpInformation;
                 popup.PlacementTarget = (UIElement)d;
                 popup.StaysOpen = false;
+                
 
                 uiElement.MouseEnter += (sender, args) =>
                 { 

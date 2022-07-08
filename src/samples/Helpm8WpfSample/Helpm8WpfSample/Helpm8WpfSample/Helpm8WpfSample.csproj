@@ -10,9 +10,6 @@
     <Reference Include="HelpInfo">
       <HintPath>..\..\..\..\libraries\Helpm8.Wpf\HelpInfo\bin\Debug\HelpInfo.dll</HintPath>
     </Reference>
-    <Reference Include="Helpm8.WPF">
-      <HintPath>..\..\..\..\libraries\Helpm8.Wpf\Helpm8.WPF\bin\Debug\netcoreapp3.1\Helpm8.WPF.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
