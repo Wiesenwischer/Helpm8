@@ -6,11 +6,11 @@
     xmlns:converters="clr-namespace:HelpInfo.Controls.Converters">
 
     <Style TargetType="{x:Type controls:HelpInfoControl}">
-        <Setter Property="Background" Value="#689ad3" />
-        <Setter Property="Foreground" Value="#04356c" />
-        <Setter Property="BorderBrush" Value="#274f7d" />
+        <Setter Property="Background" Value="#8CA1B5" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="#777778" />
         <Setter Property="FontFamily" Value="Calibri" />
-        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="3" />
         <Setter Property="Template">
             <Setter.Value>
@@ -63,7 +63,7 @@
                                         <Border x:Name="Border" Background="Transparent" BorderThickness="3"
                                                 CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}"
                                                 BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}" >
-                                            <Grid Margin="2">
+                                            <Grid Margin="0 0 2 0">
                                                 <TextBlock x:Name="Text" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
                                                            HorizontalAlignment="Center" FontWeight="Bold" Margin="3,0,3,0"
                                                            Foreground="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}"
@@ -110,20 +110,20 @@
                                 BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}">
-                            <Grid Margin="5" MinWidth="320">
+                            <Grid Margin="2 1 0 0" MinWidth="320">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition />
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Border HorizontalAlignment="Left" MinWidth="250" BorderThickness="0,0,0,2"
+                                <Border HorizontalAlignment="Left" MinWidth="200" BorderThickness="0,0,0,2"
                                         BorderBrush="{TemplateBinding BorderBrush}">
                                     <ContentControl Content="{Binding Header}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                                     ContentTemplate="{Binding HeaderTemplate, Converter={StaticResource HeaderDefaultTemplateIfNullConverter}}"
                                                     Foreground="{TemplateBinding Foreground}">
                                     </ContentControl>
                                 </Border>
-                                <Button Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CmdClose}">
+                                <!--<Button Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CmdClose}">
                                     <Button.Style>
                                         <Style TargetType="Button">
                                             <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}" />
@@ -152,13 +152,13 @@
                                             </Setter>
                                         </Style>
                                     </Button.Style>
-                                </Button>
+                                </Button>--> 
 
-                                <ContentControl Grid.Row="1" Content="{Binding Content}" Margin="0, 10, 0, 10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                <ContentControl Grid.Row="1" Content="{Binding Content}" Margin="0, 5, 0, 5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                                 ContentTemplate="{Binding ContentTemplate, Converter={StaticResource ContentDefaultTemplateIfNullConverter}}"
                                                 Foreground="{TemplateBinding Foreground}" />
 
-                                <Grid Grid.Row="2">
+                                <!--<Grid Grid.Row="2">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto"/>
@@ -176,11 +176,11 @@
                                     <Button Grid.Column="3" Content="{Binding ButtonText}" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center"
                                         Command="{Binding CmdNext}" Style="{StaticResource ButtonStyle}" Visibility="{Binding ShowNext, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     </Button>
-                                </Grid>
+                                </Grid>-->
                             </Grid>
                         </Border>
 
-                        <!-- Top -->
+                        <!-- Top --><!--
 
                         <Grid Grid.Row="0" Grid.ColumnSpan="3"
                               HorizontalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
@@ -203,7 +203,7 @@
                             </Polygon>
                         </Grid>
 
-                        <!-- Bottom -->
+                        --><!-- Bottom --><!--
                         <Grid Grid.Row="2" Grid.ColumnSpan="3"
                               HorizontalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
@@ -225,7 +225,7 @@
                             </Polygon>
                         </Grid>
 
-                        <!-- Left -->
+                        --><!-- Left --><!--
                         <Grid Grid.Column="0" Grid.RowSpan="3"
                               VerticalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
@@ -247,7 +247,7 @@
                             </Polygon>
                         </Grid>
 
-                        <!-- Right -->
+                        --><!-- Right --><!--
                         <Grid Grid.Column="2" Grid.RowSpan="3"
                               VerticalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
@@ -267,7 +267,7 @@
                                     </TransformGroup>
                                 </Polygon.RenderTransform>
                             </Polygon>
-                        </Grid>
+                        </Grid>-->
 
                     </Grid>
                 </ControlTemplate>
