@@ -1,0 +1,51 @@
+name: Helpm8.Core
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+    paths:
+      - src/libraries/Helpm8.Core/**
+      - src/libraries/Helpm8.Core.Tests/**
+      - .github/workflows/core.yml
+      - .github/workflows/composite/**
+
+  pull_request:
+    branches:
+      - main
+
+    paths:
+      - src/libraries/Helpm8.Core/**
+      - src/libraries/Helpm8.Core.Tests/**
+      - .github/workflows/core.yml
+      - .github/workflows/composite/**
+
+jobs:
+
+  BuildForPR:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - uses: ./.github/workflows/composite/build-test-pr
+        with:
+          dotnet_version: 3.1.x
+          project_path: libraries/Helpm8.Core
+          tests_path: libraries/Helpm8.Core.Tests
+          github_token: ${{ secrets.GITHUB_TOKEN }}          
+
+  Build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request'}}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - uses: ./.github/workflows/composite/build-test
+        with:
+          dotnet_version: 3.1.x
+          project_path: libraries/Helpm8.Core
+          tests_path: libraries/Helpm8.Core.Tests
+          github_token: ${{ secrets.GITHUB_TOKEN }}
