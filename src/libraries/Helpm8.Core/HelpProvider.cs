@@ -80,7 +80,7 @@ namespace Helpm8
             }
 
             results.AddRange(earlierKeys);
-
+            results.Sort(HelpKeyComparer.Comparison);
             return results;
         }
 

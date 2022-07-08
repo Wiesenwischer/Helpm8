@@ -6,7 +6,7 @@ using Helpm8.Core.Tests;
 using Helpm8.InMemory;
 using Xunit;
 
-namespace Microsoft.Extensions.Help.Test
+namespace Helpm8.Core.Tests
 {
     public class HelpFixture
     {

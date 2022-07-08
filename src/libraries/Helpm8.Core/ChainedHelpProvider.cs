@@ -71,7 +71,7 @@ namespace Helpm8
                 keys.Add(child.Key);
             }
             keys.AddRange(earlierKeys);
-
+            keys.Sort(HelpKeyComparer.Comparison);
             return keys;
         }
 
