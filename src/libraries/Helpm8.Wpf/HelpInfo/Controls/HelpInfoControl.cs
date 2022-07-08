@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HelpInfo.Controls
+namespace Helpm8.Wpf.Controls
 {
     public sealed class HelpInfoControl : Control
     {

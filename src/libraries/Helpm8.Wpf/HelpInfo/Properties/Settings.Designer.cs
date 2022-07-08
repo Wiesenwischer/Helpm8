@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelpInfo.Properties
+namespace Helpm8.Wpf.Properties
 {
     
     

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelpInfo
+namespace Helpm8.Wpf
 {
     public enum Placement
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 
-namespace HelpInfo
+namespace Helpm8.Wpf
 {
     /// <summary>
     /// Static class that can be used to localize strings used in feature tour pop-up.

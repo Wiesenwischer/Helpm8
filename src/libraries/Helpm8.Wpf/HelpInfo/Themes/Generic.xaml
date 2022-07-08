@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:HelpInfo.Controls"
-    xmlns:helpinfo="clr-namespace:HelpInfo">
+    xmlns:controls="clr-namespace:Helpm8.Wpf.Controls"
+    xmlns:helpinfo="clr-namespace:Helpm8.Wpf">
 
     <Style TargetType="{x:Type controls:HelpInfoControl}">
         <Setter Property="Background" Value="#689ad3" />

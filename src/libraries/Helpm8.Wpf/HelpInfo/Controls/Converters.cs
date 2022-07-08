@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace HelpInfo.Controls
+namespace Helpm8.Wpf.Controls
 {
     public class PlacementToAlignmentConverter : IValueConverter
     {
