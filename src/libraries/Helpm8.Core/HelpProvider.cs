@@ -34,7 +34,7 @@ namespace Helpm8
         /// <summary>
         /// Sets a value for a given key.
         /// </summary>
-        /// <param name="key">The configuration key to set.</param>
+        /// <param name="key">The help key to set.</param>
         /// <param name="value">The value to set.</param>
         public virtual void Set(string key, string? value)
             => Data[key] = value;
@@ -93,7 +93,7 @@ namespace Helpm8
         /// <summary>
         /// Generates a string representing this provider name and relevant details.
         /// </summary>
-        /// <returns> The configuration name. </returns>
+        /// <returns> The help provider name. </returns>
         public override string ToString() => $"{GetType().Name}";
     }
 }
