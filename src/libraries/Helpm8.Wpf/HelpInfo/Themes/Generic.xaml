@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Helpm8.Wpf.Controls"
-    xmlns:helpinfo="clr-namespace:Helpm8.Wpf">
+    xmlns:helpinfo="clr-namespace:Helpm8.Wpf"
+    xmlns:converters="clr-namespace:HelpInfo.Controls.Converters">
 
     <Style TargetType="{x:Type controls:HelpInfoControl}">
         <Setter Property="Background" Value="#689ad3" />
@@ -38,7 +39,7 @@
                         <controls:BorderThicknessToInnerPolygonTransform x:Key="BorderThicknessToInnerPolygonTransform" />
                         <controls:ThicknessToStrokeThickness x:Key="ThicknessToStrokeThickness" />
                         <controls:BorderThicknessToContainerMarginConverter x:Key="BorderThicknessToContainerMarginConverter" />
-                        <controls:IsNullConverter x:Key="IsNullConverter" />
+                        <converters:IsNullConverter x:Key="IsNullConverter" />
 
                         <Style TargetType="Polygon" x:Key="PolygonStyle">
                             <Setter Property="StrokeThickness" Value="0" />
