@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ams.Solution AG")]
-[assembly: AssemblyProduct("HelpInfo")]
+[assembly: AssemblyProduct("Helpm8.Wpf")]
 [assembly: AssemblyCopyright("Copyright © ams.Solution AG 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
