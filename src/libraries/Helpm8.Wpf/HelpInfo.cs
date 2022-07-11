@@ -4,6 +4,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 using Helpm8.Wpf.Models;
 using Helpm8.Wpf.Controls;
@@ -39,35 +40,35 @@ namespace Helpm8.Wpf
 
                 var helpInformation = new HelpInformation()
                 {
-                    Header = "Bin dein Header",
+                    Header = "I know u need help..",
                     Content = e.NewValue
                 };
 
 
                 var hiControl = new HelpInfoControl();
-
-
+                
 
                 var popup = new Popup();
                 popup.AllowsTransparency = true;
                 popup.Child = hiControl;
                 (popup.Child as FrameworkElement).DataContext = helpInformation;
                 popup.PlacementTarget = (UIElement)d;
-                popup.StaysOpen = false;
-                
+                popup.Placement = PlacementMode.Bottom;
 
-                uiElement.MouseEnter += (sender, args) =>
-                { 
-                    popup.IsOpen = true;
+
+                uiElement.MouseLeave += (sender, args) =>
+                {
+                    popup.IsOpen = false;
                 };
 
-
-
+                uiElement.MouseEnter += (sender, args) =>
+                {
+                    popup.IsOpen = true;
+                };
+                
 
             }
         }
-
-
 
         public static string GetHelpKey(DependencyObject obj)
         {

@@ -6,9 +6,9 @@
     xmlns:converters="clr-namespace:HelpInfo.Controls.Converters">
 
     <Style TargetType="{x:Type controls:HelpInfoControl}">
-        <Setter Property="Background" Value="#8CA1B5" />
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="BorderBrush" Value="#777778" />
+        <Setter Property="Background" Value="#D9E8F5" />
+        <Setter Property="Foreground" Value="#304269" />
+        <Setter Property="BorderBrush" Value="#91BED4" />
         <Setter Property="FontFamily" Value="Calibri" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="3" />
@@ -93,7 +93,7 @@
                         <Style TargetType="ContentControl" />
                     </ControlTemplate.Resources>
 
-                    <Grid Background="Transparent">
+                    <Grid Background="Transparent" Margin="2 4 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition />
@@ -180,9 +180,9 @@
                             </Grid>
                         </Border>
 
-                        <!-- Top --><!--
+                        <!-- Top -->
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="3"
+                        <!--<Grid Grid.Row="0" Grid.Column="1"
                               HorizontalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
                               Margin="{Binding BorderThickness, 
@@ -201,10 +201,10 @@
                                     </TransformGroup>
                                 </Polygon.RenderTransform>
                             </Polygon>
-                        </Grid>
+                        </Grid>-->
 
-                        --><!-- Bottom --><!--
-                        <Grid Grid.Row="2" Grid.ColumnSpan="3"
+                         <!--Bottom--> 
+                        <!--<Grid Grid.Row="2" Grid.ColumnSpan="3"
                               HorizontalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
                               Margin="{Binding BorderThickness, 
@@ -225,7 +225,7 @@
                             </Polygon>
                         </Grid>
 
-                        --><!-- Left --><!--
+                         --><!--Left--><!-- 
                         <Grid Grid.Column="0" Grid.RowSpan="3"
                               VerticalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
@@ -247,7 +247,7 @@
                             </Polygon>
                         </Grid>
 
-                        --><!-- Right --><!--
+                         --><!--Right--><!-- 
                         <Grid Grid.Column="2" Grid.RowSpan="3"
                               VerticalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
                               Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
