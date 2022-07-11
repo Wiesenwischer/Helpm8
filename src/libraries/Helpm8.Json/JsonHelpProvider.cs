@@ -43,7 +43,7 @@ namespace Helpm8.Json
                         $"The help file '{Source.FileName}' was not found and is not optional.");
                     if (!string.IsNullOrEmpty(file?.PhysicalPath))
                     {
-                        error.Append($"The expected physical path was '{file.PhysicalPath}'.");
+                        error.Append($" The expected physical path was '{file.PhysicalPath}'.");
                     }
                     HandleException(ExceptionDispatchInfo.Capture(new FileNotFoundException(error.ToString())));
                 }
