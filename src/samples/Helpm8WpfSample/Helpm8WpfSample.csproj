@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="HelpInfo">
-      <HintPath>..\..\..\..\libraries\Helpm8.Wpf\HelpInfo\bin\Debug\HelpInfo.dll</HintPath>
+      <HintPath>..\..\libraries\Helpm8.Wpf\bin\Debug\HelpInfo.dll</HintPath>
     </Reference>
   </ItemGroup>
 
