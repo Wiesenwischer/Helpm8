@@ -607,6 +607,53 @@ Section3:
                     }
                 };
 
+            public static TestSection DuplicatesTestHelpWithReplacingValues { get; }
+                = new TestSection
+                {
+                    Values = new[]
+                    {
+                        ("Key1", (TestKeyValue)"Value1"),
+                        ("Key1", (TestKeyValue)"Value1Replaced")
+                    },
+                    Sections = new[]
+                    {
+                        ("Section1", new TestSection
+                        {
+                            Values = new[] {("Key2", (TestKeyValue)"Value12")},
+                            Sections = new[]
+                            {
+                                ("Section2", new TestSection
+                                {
+                                    Values = new[]
+                                    {
+                                        ("Key3", (TestKeyValue)"Value123"),
+                                        ("Key3a", (TestKeyValue)new[] {"ArrayValue0", "ArrayValue1", "ArrayValue2"})
+                                    },
+                                }),
+                                ("Section2", new TestSection
+                                {
+                                    Values = new[]
+                                    {
+                                        ("Key3", (TestKeyValue)"Value123Replaced"),
+                                        ("Key3a", (TestKeyValue)new[] {"ArrayValue0Replaced", "ArrayValue1Replaced", "ArrayValue2Replaced"})
+                                    },
+                                })
+
+                            }
+                        }),
+                        ("Section3", new TestSection
+                        {
+                            Sections = new[]
+                            {
+                                ("Section4", new TestSection
+                                {
+                                    Values = new[] {("Key4", (TestKeyValue)"Value344")}
+                                })
+                            }
+                        })
+                    }
+                };
+
             public static TestSection DuplicatesDifferentCaseTestHelp { get; }
                 = new TestSection
                 {

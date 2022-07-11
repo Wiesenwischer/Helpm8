@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core", "libraries\Helpm8.Core\Helpm8.Core.csproj", "{1A14CFD4-4885-40C7-8F75-DEF477D11164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Core", "libraries\Helpm8.Core\Helpm8.Core.csproj", "{1A14CFD4-4885-40C7-8F75-DEF477D11164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Core.Tests", "libraries\Helpm8.Core.Tests\Helpm8.Core.Tests.csproj", "{618269DA-3CAA-4040-B789-C6779D740277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Core.Tests", "libraries\Helpm8.Core.Tests\Helpm8.Core.Tests.csproj", "{618269DA-3CAA-4040-B789-C6779D740277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Json", "libraries\Helpm8.Json\Helpm8.Json.csproj", "{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Json.Tests", "libraries\Helpm8.Json.Tests\Helpm8.Json.Tests.csproj", "{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{618269DA-3CAA-4040-B789-C6779D740277}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{618269DA-3CAA-4040-B789-C6779D740277}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{618269DA-3CAA-4040-B789-C6779D740277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
