@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <releaseNotes>WIP</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <tags>help guidance framework dotnet</tags>
+  </metadata>
+</package>
