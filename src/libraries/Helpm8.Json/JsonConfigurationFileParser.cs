@@ -19,12 +19,6 @@ namespace Helpm8.Json
 
         private IDictionary<string, string?> ParseStream(Stream input)
         {
-            //var jsonDocumentOptions = new JsonDocumentOptions
-            //{
-            //    CommentHandling = JsonCommentHandling.Skip,
-            //    AllowTrailingCommas = true,
-            //};
-
             using var reader = new StreamReader(input);
 
             JToken rootElement = JToken.ReadFrom(new JsonTextReader(reader));
@@ -79,10 +73,7 @@ namespace Helpm8.Json
                     }
                     break;
 
-                case JTokenType.Integer:
-                case JTokenType.Float:
                 case JTokenType.String:
-                case JTokenType.Boolean:
                 case JTokenType.Null:
                     string key = _paths.Peek();
                     if (_data.ContainsKey(key))
