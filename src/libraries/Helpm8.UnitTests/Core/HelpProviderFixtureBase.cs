@@ -106,7 +106,7 @@ Section3:
                 () => BuildHelpRoot(LoadThroughProvider(TestSection.DuplicatesDifferentCaseTestHelp)));
         }
 
-        private void AssertFormatOrArgumentException(Action test)
+        protected void AssertFormatOrArgumentException(Action test)
         {
             Exception caught = null;
             try
@@ -120,6 +120,24 @@ Section3:
 
             Assert.True(caught is ArgumentException
                         || caught is FormatException);
+        }
+
+        protected void AssertFormatOrArgumentException(Action test, string exceptionMessage)
+        {
+            Exception caught = null;
+            try
+            {
+                test();
+            }
+            catch (Exception e)
+            {
+                caught = e;
+            }
+
+            Assert.True(caught is ArgumentException
+                        || caught is FormatException);
+
+            Assert.Equal(exceptionMessage, caught.Message);
         }
 
         public class AsOptions
@@ -359,6 +377,11 @@ Section3:
             public object Value { get; }
 
             public TestKeyValue(string value)
+            {
+                Value = value;
+            }
+
+            public TestKeyValue(int value)
             {
                 Value = value;
             }
@@ -607,6 +630,53 @@ Section3:
                     }
                 };
 
+            public static TestSection DuplicatesTestHelpWithReplacingValues { get; }
+                = new TestSection
+                {
+                    Values = new[]
+                    {
+                        ("Key1", (TestKeyValue)"Value1"),
+                        ("Key1", (TestKeyValue)"Value1Replaced")
+                    },
+                    Sections = new[]
+                    {
+                        ("Section1", new TestSection
+                        {
+                            Values = new[] {("Key2", (TestKeyValue)"Value12")},
+                            Sections = new[]
+                            {
+                                ("Section2", new TestSection
+                                {
+                                    Values = new[]
+                                    {
+                                        ("Key3", (TestKeyValue)"Value123"),
+                                        ("Key3a", (TestKeyValue)new[] {"ArrayValue0", "ArrayValue1", "ArrayValue2"})
+                                    },
+                                }),
+                                ("Section2", new TestSection
+                                {
+                                    Values = new[]
+                                    {
+                                        ("Key3", (TestKeyValue)"Value123Replaced"),
+                                        ("Key3a", (TestKeyValue)new[] {"ArrayValue0Replaced", "ArrayValue1Replaced", "ArrayValue2Replaced"})
+                                    },
+                                })
+
+                            }
+                        }),
+                        ("Section3", new TestSection
+                        {
+                            Sections = new[]
+                            {
+                                ("Section4", new TestSection
+                                {
+                                    Values = new[] {("Key4", (TestKeyValue)"Value344")}
+                                })
+                            }
+                        })
+                    }
+                };
+
             public static TestSection DuplicatesDifferentCaseTestHelp { get; }
                 = new TestSection
                 {
@@ -739,6 +809,15 @@ Section3:
                             }
                         })
                     }
+                };
+
+            public static TestSection UnsupportedValuesTestHelp { get; }
+                = new TestSection
+                {
+                    Values = new[]
+                    {
+                        ("Key1", new TestKeyValue(55))
+                    },
                 };
         }
     }

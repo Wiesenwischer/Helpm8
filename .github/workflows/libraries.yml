@@ -1,4 +1,4 @@
-name: Helpm8.Core
+name: Libraries
 
 on:
   workflow_dispatch:
@@ -7,9 +7,8 @@ on:
       - main
 
     paths:
-      - src/libraries/Helpm8.Core/**
-      - src/libraries/Helpm8.Core.Tests/**
-      - .github/workflows/core.yml
+      - src/libraries/**
+      - .github/workflows/libraries.yml
       - .github/workflows/composite/**
 
   pull_request:
@@ -17,9 +16,8 @@ on:
       - main
 
     paths:
-      - src/libraries/Helpm8.Core/**
-      - src/libraries/Helpm8.Core.Tests/**
-      - .github/workflows/core.yml
+      - src/libraries/**
+      - .github/workflows/libraries.yml
       - .github/workflows/composite/**
 
 jobs:
@@ -33,8 +31,8 @@ jobs:
       - uses: ./.github/workflows/composite/build-test-pr
         with:
           dotnet_version: 3.1.x
-          project_path: libraries/Helpm8.Core
-          tests_path: libraries/Helpm8.Core.Tests
+          solution_path: src/Libraries.sln
+          tests_path: src/libraries/Helpm8.UnitTests
           github_token: ${{ secrets.GITHUB_TOKEN }}          
 
   Build:
@@ -46,6 +44,6 @@ jobs:
       - uses: ./.github/workflows/composite/build-test
         with:
           dotnet_version: 3.1.x
-          project_path: libraries/Helpm8.Core
-          tests_path: libraries/Helpm8.Core.Tests
+          solution_path: src/Libraries.sln
+          tests_path: src/libraries/Helpm8.UnitTests
           github_token: ${{ secrets.GITHUB_TOKEN }}
