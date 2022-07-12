@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - file-provider
 
     paths:
       - src/libraries/**
