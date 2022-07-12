@@ -85,7 +85,7 @@ namespace Helpm8.Json.Tests
                     Optional = true
                 });
 
-            var json = "{\n\"Key\":\"Value\"\n}";
+            var json = "\"Key\":\"Value\"";
             AssertFormatOrArgumentException(
                 () => BuildHelpRoot((provider, () => provider.Load(TestStreamHelpers.StringToStream(json)))));
         }
