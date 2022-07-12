@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Core", "libraries\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Core.Tests", "libraries\Helpm8.Core.Tests\Helpm8.Core.Tests.csproj", "{618269DA-3CAA-4040-B789-C6779D740277}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Json", "libraries\Helpm8.Json\Helpm8.Json.csproj", "{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Json", "libraries\Helpm8.Json\Helpm8.Json.csproj", "{4D9C5AC8-44A2-41F1-87C8-FF70D2912DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Json.Tests", "libraries\Helpm8.Json.Tests\Helpm8.Json.Tests.csproj", "{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Json.Tests", "libraries\Helpm8.Json.Tests\Helpm8.Json.Tests.csproj", "{FD1C51CB-F411-4EF0-B42A-2F93E3759E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

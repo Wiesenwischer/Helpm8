@@ -36,6 +36,7 @@ jobs:
           dotnet_version: 3.1.x
           project_path: libraries/Helpm8.Json
           tests_path: libraries/Helpm8.Json.Tests
+          tests_exclude: "[Helpm8.Core*]*"
           github_token: ${{ secrets.GITHUB_TOKEN }}          
 
   Build:

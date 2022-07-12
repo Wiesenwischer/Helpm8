@@ -6,11 +6,15 @@ inputs:
     description: "Version of dotnet to use for testing"
     required: true
   project_path:
-    description: "Path to project to test e.g. libraries/Helpm8.Core"
+    description: "Path to project to build, e.g. libraries/Helpm8.Core"
     required: true
   tests_path:
-    description: "Path to test project e.g. libraries/Helpm8.Core.Tests"
+    description: "Path to test project, e.g. libraries/Helpm8.Core.Tests"
     required: true
+  tests_filter:
+    description: "Filter expression for excluding results from code coverage, e.g. [Help8.Core*]* <= excludes all types from all assemblies starting with Help8.Core"
+    required: false
+    default: ""
   github_token:
     description: "Token used to access github for uploading coverage report"
     required: true
@@ -22,27 +26,24 @@ runs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: ${{ inputs.dotnet_version }}
+    - name: Restore .NET
+      shell: bash
+      run: dotnet restore src/Libraries.sln
     - name: Build and run unit tests
       shell: bash
       run: |
-        cd src
-        dotnet restore "Libraries.sln"
-        cd ${{ inputs.project_path }}
-        dotnet build --no-restore
-        cd -
-        cd ${{ inputs.tests_path }}
-        dotnet build --no-restore
-        dotnet test --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.info /p:CoverletOutputFormat=lcov /p:Threshold=70
+        dotnet build src/${{ inputs.project_path }} --no-restore
+        dotnet test src/${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70 /Exclude=${{ inputs.tests_filter }} /p:MergeWith=../TestResults/coverage-overall.json
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
-        path-to-lcov: src/${{ inputs.tests_path}}/TestResults/coverage.info
+        path-to-lcov: src/libraries/TestResults/coverage-overall.json
     - name: Include coverage report in PRe
       uses: romeovs/lcov-reporter-action@v0.2.16
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}     
-        lcov-file: src/${{ inputs.tests_path}}/TestResults/coverage.info
+        lcov-file: src/libraries/TestResults/coverage-overall.json
       
 
 
