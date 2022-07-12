@@ -33,7 +33,7 @@ runs:
       shell: bash
       run: |
         dotnet build src/${{ inputs.project_path }} --no-restore
-        dotnet test src/${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70 /Exclude=${{ inputs.tests_filter }} /p:MergeWith=../TestResults/coverage-overall.json
+        dotnet test src/${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70 /p:Exclude=${{ inputs.tests_filter }} /p:MergeWith=../TestResults/coverage-overall.json
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
