@@ -8,6 +8,9 @@ inputs:
   solution_path:
     description: "Path to solution to build e.g. src/Libraries.sln"
     required: true
+  tests_path:
+    description: "Path to test project, e.g. src/libraries/Helpm8.UnitTests"
+    required: true
   github_token:
     description: "Token used to access github for uploading coverage report"
     required: true
@@ -26,12 +29,12 @@ runs:
       shell: bash
       run: |
         dotnet build ${{ inputs.solution_path }} --no-restore
-        dotnet test ${{ inputs.solution_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
+        dotnet test ${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
-        path-to-lcov: TestResults/coverage.json
+        path-to-lcov: ${{ inputs.tests_path }}/TestResults/coverage.json
 
       
 

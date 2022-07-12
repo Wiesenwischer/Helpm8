@@ -33,6 +33,7 @@ jobs:
         with:
           dotnet_version: 3.1.x
           solution_path: src/Libraries.sln
+          tests_path: src/libraries/Helpm8.UnitTests
           github_token: ${{ secrets.GITHUB_TOKEN }}          
 
   Build:
