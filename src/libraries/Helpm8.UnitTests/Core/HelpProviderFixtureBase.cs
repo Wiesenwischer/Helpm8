@@ -106,7 +106,7 @@ Section3:
                 () => BuildHelpRoot(LoadThroughProvider(TestSection.DuplicatesDifferentCaseTestHelp)));
         }
 
-        private void AssertFormatOrArgumentException(Action test)
+        protected void AssertFormatOrArgumentException(Action test)
         {
             Exception caught = null;
             try

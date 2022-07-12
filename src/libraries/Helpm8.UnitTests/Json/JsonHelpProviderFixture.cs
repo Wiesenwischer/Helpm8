@@ -76,6 +76,22 @@ namespace Helpm8.Json.Tests
                 BuildHelpRoot(LoadThroughProvider(TestSection.DuplicatesTestHelpWithReplacingValues)));
         }
 
+        [Fact]
+        public void Root_is_no_object_throws()
+        {
+            var provider = new JsonHelpProvider(
+                new JsonHelpSource
+                {
+                    Optional = true
+                });
+
+            var json = "\"Key\":\"Value\"";
+            AssertFormatOrArgumentException(
+                () => BuildHelpRoot((provider, () => provider.Load(TestStreamHelpers.StringToStream(json)))));
+
+        }
+
+
 
         protected virtual void AssertHelpWithReplacedValues(
             IHelpRoot help,
