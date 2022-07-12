@@ -19,6 +19,9 @@ runs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: ${{ inputs.dotnet_version }}
+    - name: Restore .NET
+      shell: bash
+      run: dotnet restore ${{ inputs.solution_path }}        
     - name: Build and run unit tests
       shell: bash
       run: |
