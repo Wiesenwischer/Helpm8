@@ -1,15 +1,12 @@
-name: "Build for PRe"
+name: "Build"
 description: "Builds a package and runs unit tests without pushing"
 
 inputs:
   dotnet_version:
     description: "Version of dotnet to use for testing"
     required: true
-  project_path:
-    description: "Path to project to test e.g. libraries/Helpm8.Core"
-    required: true
-  tests_path:
-    description: "Path to test project e.g. libraries/Helpm8.Core.Tests"
+  solution_path:
+    description: "Path to solution to build e.g. src/Libraries.sln"
     required: true
   github_token:
     description: "Token used to access github for uploading coverage report"
@@ -25,19 +22,13 @@ runs:
     - name: Build and run unit tests
       shell: bash
       run: |
-        cd src
-        dotnet restore "Libraries.sln"
-        cd ${{ inputs.project_path }}
-        dotnet build --no-restore
-        cd -
-        cd ${{ inputs.tests_path }}
-        dotnet build --no-restore
-        dotnet test --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.info /p:CoverletOutputFormat=lcov /p:Threshold=70
+        dotnet build ${{ inputs.solution_path }} --no-restore
+        dotnet test ${{ inputs.solution_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
-        path-to-lcov: src/${{ inputs.tests_path}}/TestResults/coverage.info
+        path-to-lcov: TestResults/coverage.json
 
       
 
