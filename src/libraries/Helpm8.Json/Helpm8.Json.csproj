@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Nullable>enable</Nullable>
+		<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
+		<Owners>Marcus Dammann, Stefan Vogelsang</Owners>
+		<Description>JSON help provider for Helpm8.</Description>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<Copyright>Copyright 2022</Copyright>
+		<ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Primitives" Version="6.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Helpm8.Core\Helpm8.Core.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -15,8 +15,8 @@ namespace Helpm8
 
         public string? this[string key]
         {
-            get => GetConfiguration(_providers, key);
-            set => SetConfiguration(_providers, key, value);
+            get => GetHelp(_providers, key);
+            set => SetHelp(_providers, key, value);
         }
 
         public IEnumerable<IHelpProvider> Providers => _providers;
@@ -42,7 +42,7 @@ namespace Helpm8
             }
         }
 
-        internal static string? GetConfiguration(IList<IHelpProvider> providers, string key)
+        internal static string? GetHelp(IList<IHelpProvider> providers, string key)
         {
             for (int i = providers.Count - 1; i >= 0; i--)
             {
@@ -57,7 +57,7 @@ namespace Helpm8
             return null;
         }
 
-        internal static void SetConfiguration(IList<IHelpProvider> providers, string key, string? value)
+        internal static void SetHelp(IList<IHelpProvider> providers, string key, string? value)
         {
             if (providers.Count == 0)
             {
