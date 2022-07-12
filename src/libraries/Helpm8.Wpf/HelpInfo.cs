@@ -40,7 +40,8 @@ namespace Helpm8.Wpf
 
                 var helpInformation = new HelpInformation()
                 {
-                    Header = "I know u need help..",
+                    Key = GetHelpKey(d),
+                    Header = GetHelpKey(d) as object,
                     Content = e.NewValue
                 };
 
@@ -82,6 +83,6 @@ namespace Helpm8.Wpf
 
         // Using a DependencyProperty as the backing store for HelpKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HelpKeyProperty =
-            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo), new PropertyMetadata(string.Empty));
+            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo), new PropertyMetadata("Key is empty"));
     }
 }

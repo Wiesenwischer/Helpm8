@@ -8,6 +8,7 @@ namespace Helpm8.Wpf.Models
 {
     internal class HelpInformation
     {
+        public string Key { get; set; }
         public object Header { get; set; }
         public object Content { get; set; }
     }
