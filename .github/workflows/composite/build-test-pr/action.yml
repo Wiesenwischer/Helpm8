@@ -8,6 +8,9 @@ inputs:
   solution_path:
     description: "Path to solution to build, e.g. src/Libraries.sln"
     required: true
+  tests_path:
+    description: "Path to test project, e.g. src/libraries/Helpm8.UnitTests"
+    required: true    
   github_token:
     description: "Token used to access github for uploading coverage report"
     required: true
