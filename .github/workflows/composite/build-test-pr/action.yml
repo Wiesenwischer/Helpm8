@@ -25,8 +25,8 @@ runs:
     - name: Build and run unit tests
       shell: bash
       run: |
-        dotnet build src/${{ inputs.solution_path }} --no-restore
-        dotnet test src/${{ inputs.solution_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
+        dotnet build ${{ inputs.solution_path }} --no-restore
+        dotnet test ${{ inputs.solution_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
@@ -36,7 +36,7 @@ runs:
       uses: romeovs/lcov-reporter-action@v0.2.16
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}     
-        lcov-file: TestResults/coverage.json
+        lcov-file: ${{ inputs.solution_path }}/TestResults/coverage.json
       
 
 
