@@ -32,9 +32,7 @@ jobs:
       - uses: ./.github/workflows/composite/build-test-pr
         with:
           dotnet_version: 3.1.x
-          project_path: libraries/Helpm8.Json
-          tests_path: libraries/Helpm8.Json.Tests
-          tests_filter: "[Helpm8.Core*]*"
+          solution_path: src/Libraries.sln
           github_token: ${{ secrets.GITHUB_TOKEN }}          
 
   Build:
@@ -46,6 +44,5 @@ jobs:
       - uses: ./.github/workflows/composite/build-test
         with:
           dotnet_version: 3.1.x
-          project_path: libraries/Helpm8.Json
-          tests_path: libraries/Helpm8.Json.Tests
+          solution_path: src/Libraries.sln
           github_token: ${{ secrets.GITHUB_TOKEN }}
