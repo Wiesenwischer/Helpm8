@@ -85,12 +85,25 @@ namespace Helpm8.Json.Tests
                     Optional = true
                 });
 
-            var json = "\"Key\":\"Value\"";
+            var json = "{\n\"Key\":\"Value\"\n}";
             AssertFormatOrArgumentException(
                 () => BuildHelpRoot((provider, () => provider.Load(TestStreamHelpers.StringToStream(json)))));
-
         }
 
+        [Fact]
+        public void Value_type_not_a_string_throws()
+        {
+            var provider = new JsonHelpProvider(
+                new JsonHelpSource
+                {
+                    Optional = true
+                });
+
+            var json = "{\n\"Key\":55\n}";
+            AssertFormatOrArgumentException(
+                () => BuildHelpRoot((provider, () => provider.Load(TestStreamHelpers.StringToStream(json)))),
+                "Unsupported JSON token 'Integer' was found.");
+        }
 
 
         protected virtual void AssertHelpWithReplacedValues(

@@ -122,6 +122,24 @@ Section3:
                         || caught is FormatException);
         }
 
+        protected void AssertFormatOrArgumentException(Action test, string exceptionMessage)
+        {
+            Exception caught = null;
+            try
+            {
+                test();
+            }
+            catch (Exception e)
+            {
+                caught = e;
+            }
+
+            Assert.True(caught is ArgumentException
+                        || caught is FormatException);
+
+            Assert.Equal(exceptionMessage, caught.Message);
+        }
+
         public class AsOptions
         {
             public string Key1 { get; set; }
@@ -359,6 +377,11 @@ Section3:
             public object Value { get; }
 
             public TestKeyValue(string value)
+            {
+                Value = value;
+            }
+
+            public TestKeyValue(int value)
             {
                 Value = value;
             }
@@ -786,6 +809,15 @@ Section3:
                             }
                         })
                     }
+                };
+
+            public static TestSection UnsupportedValuesTestHelp { get; }
+                = new TestSection
+                {
+                    Values = new[]
+                    {
+                        ("Key1", new TestKeyValue(55))
+                    },
                 };
         }
     }
