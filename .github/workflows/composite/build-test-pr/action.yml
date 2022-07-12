@@ -34,7 +34,7 @@ runs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
-        path-to-lcov: TestResults/coverage.json
+        path-to-lcov: ${{ inputs.tests_path }}/TestResults/coverage.json
     - name: Include coverage report in PRe
       uses: romeovs/lcov-reporter-action@v0.2.16
       with:
