@@ -22,19 +22,19 @@ namespace Helpm8.Wpf
             DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo),
                 new PropertyMetadata(null, OnHelpTextChanged));
 
-        public static object GetHelpContext(DependencyObject obj)
+        public static IHelp GetHelpContext(DependencyObject obj)
         {
-            return obj.GetValue(HelpContextProperty);
+            return (IHelp)obj.GetValue(HelpContextProperty);
         }
 
-        public static void SetHelpContext(DependencyObject obj, object value)
+        public static void SetHelpContext(DependencyObject obj, IHelp value)
         {
             obj.SetValue(HelpContextProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for HelpContext.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HelpContextProperty =
-            DependencyProperty.RegisterAttached("HelpContext", typeof(object), typeof(HelpInfo),
+            DependencyProperty.RegisterAttached("HelpContext", typeof(IHelp), typeof(HelpInfo),
                 new FrameworkPropertyMetadata
                 {
                     Inherits = true,
@@ -54,8 +54,8 @@ namespace Helpm8.Wpf
 
         private static void UpdateHelpText(DependencyObject d)
         {
-            var ctx = d.GetValue(HelpContextProperty) as IHelp;
-            var key = d.GetValue(HelpKeyProperty) as string;
+            var ctx = GetHelpContext(d);
+            var key = GetHelpKey(d);
             
             if (ctx != null && string.IsNullOrEmpty(key) == false)
             {
