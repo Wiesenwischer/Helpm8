@@ -46,9 +46,6 @@ namespace Helpm8.Wpf
 
         private static void OnHelpContextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var x = e.NewValue;
-            Debug.WriteLine($"HelpContext changed on: {d.GetType().Name}");
-
             UpdateHelpText(d);
         }
 
@@ -66,9 +63,6 @@ namespace Helpm8.Wpf
 
         private static void OnHelpTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var x = e.NewValue;
-            Debug.WriteLine($"HelpText changed on: {d.GetType().Name}");
-
             UpdateHelpText(d);
         }
 
