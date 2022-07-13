@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Json", "libraries\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.UnitTests", "libraries\Helpm8.UnitTests\Helpm8.UnitTests.csproj", "{D43FA00E-F0F3-482A-AC42-0359D0491583}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Wpf", "libraries\Helpm8.Wpf\Helpm8.Wpf.csproj", "{598AAB89-EF7C-44C0-9B02-024A20B1B802}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D43FA00E-F0F3-482A-AC42-0359D0491583}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D43FA00E-F0F3-482A-AC42-0359D0491583}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D43FA00E-F0F3-482A-AC42-0359D0491583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598AAB89-EF7C-44C0-9B02-024A20B1B802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598AAB89-EF7C-44C0-9B02-024A20B1B802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598AAB89-EF7C-44C0-9B02-024A20B1B802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598AAB89-EF7C-44C0-9B02-024A20B1B802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
