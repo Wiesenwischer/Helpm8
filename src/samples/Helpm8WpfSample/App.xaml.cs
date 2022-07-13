@@ -37,14 +37,10 @@ namespace Helpm8WpfSample
         }
     }
 
-    public class MainWindowViewModel : ISupportHelp
+    public class MainWindowViewModel 
     {
         public IHelp Help { get; set; }
 
-        public string Title { get; } = "Moinsen";
-
-        public string HelpKey { get; } = "MyHelpKey";
-
-
+        public string Title { get; } = "Helpm8 - WPF Sample App";
     }
 }
