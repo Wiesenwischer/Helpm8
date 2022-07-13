@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:helpm8 = "clr-namespace:Helpm8.Wpf;assembly=Helpm8.Wpf"
+        xmlns:converters="clr-namespace:Helpm8WpfSample.Converters"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="220" Width="400">
+        Title="{Binding Title}" Height="225" Width="400">
+    <Window.InputBindings>
+        <KeyBinding 
+             Key="F1"
+             Command="helpm8:CustomCommands.Guidance" />
+    </Window.InputBindings>
     <Grid helpm8:HelpInfo.HelpContext="{Binding Path=Help}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -15,12 +21,16 @@
         <StackPanel Grid.Row="0">
             <StackPanel.Resources>
                 <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
             </StackPanel.Resources>
             <TextBlock Text="Helpm8 sample" FontSize="25" Width="auto" Height="auto" TextAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock Text="Move the mouse cursor over the components to display the help text" FontSize="12" Width="300" Height="auto" TextWrapping="Wrap" TextAlignment="Center" Margin="0 10 0 0"/>
-            <TextBlock FontSize="15" Width="auto" Height="auto" TextAlignment="Center" 
+            <TextBlock FontSize="12" Width="auto" Height="auto" TextAlignment="Center" 
                        Visibility="{Binding Path=(helpm8:HelpInfo.IsHelpActive),
-                Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Self}}">Hilfe aktiv</TextBlock>
+                Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Self}}">Help active. Press F1 to deactivate.</TextBlock>
+            <TextBlock FontSize="12" Width="auto" Height="auto" TextAlignment="Center" 
+                       Visibility="{Binding Path=(helpm8:HelpInfo.IsHelpActive),
+                Converter={StaticResource InvertedBooleanToVisibilityConverter}, RelativeSource={RelativeSource Self}}">Help deactivated. Press F1 to activate.</TextBlock>
         </StackPanel>
 
 

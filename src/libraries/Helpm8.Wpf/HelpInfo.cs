@@ -1,28 +1,11 @@
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Helpm8.Wpf.Controls;
+using System.Collections.Concurrent;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Helpm8.Wpf
 {
-    public class CustomCommands
-    {
-        static CustomCommands()
-        {
-            var gestures = new InputGestureCollection()
-            {
-                new KeyGesture(Key.F2)
-            };
-            CustomHelp = new RoutedUICommand("", "CustomHelp", typeof(CustomCommands), gestures);
-        }
-
-        public static RoutedUICommand CustomHelp { get; }
-    }
-
     public class HelpInfo : DependencyObject
     {
         private static bool _canShowHelp = true;
@@ -30,7 +13,7 @@ namespace Helpm8.Wpf
         static HelpInfo()
         {
             CommandManager.RegisterClassCommandBinding(typeof(FrameworkElement),
-                new CommandBinding(CustomCommands.CustomHelp,
+                new CommandBinding(CustomCommands.Guidance,
                     Executed,
                     CanExecute));
         }
@@ -151,7 +134,6 @@ namespace Helpm8.Wpf
                  var popup = new Popup
                  {
                      AllowsTransparency = true,
-                     //Child = hiControl,
                      PlacementTarget = target,
                      Placement = PlacementMode.Bottom
                  };

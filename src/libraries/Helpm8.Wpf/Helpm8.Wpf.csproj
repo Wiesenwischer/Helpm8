@@ -64,6 +64,7 @@
     <Compile Include="Converters\PlacementToAlignmentConverter.cs" />
     <Compile Include="Converters\PlacementToVisibilityConverter.cs" />
     <Compile Include="Converters\ThicknessToStrokeThickness.cs" />
+    <Compile Include="CustomCommands.cs" />
     <Compile Include="HelpInfo.cs" />
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
