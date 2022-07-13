@@ -57,16 +57,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Converters\BorderThicknessToContainerMarginConverter.cs" />
-    <Compile Include="Controls\Converters\BorderThicknessToInnerPolygonTransform.cs" />
-    <Compile Include="Controls\Converters\ContentDefaultTemplateIfNullConverter.cs" />
-    <Compile Include="Controls\Converters\IsNullConverter.cs" />
-    <Compile Include="Controls\Converters\PlacementToAlignmentConverter.cs" />
-    <Compile Include="Controls\Converters\PlacementToVisibilityConverter.cs" />
-    <Compile Include="Controls\Converters\ThicknessToStrokeThickness.cs" />
+    <Compile Include="Converters\BorderThicknessToContainerMarginConverter.cs" />
+    <Compile Include="Converters\BorderThicknessToInnerPolygonTransform.cs" />
+    <Compile Include="Converters\ContentDefaultTemplateIfNullConverter.cs" />
+    <Compile Include="Converters\IsNullConverter.cs" />
+    <Compile Include="Converters\PlacementToAlignmentConverter.cs" />
+    <Compile Include="Converters\PlacementToVisibilityConverter.cs" />
+    <Compile Include="Converters\ThicknessToStrokeThickness.cs" />
     <Compile Include="HelpInfo.cs" />
-    <Compile Include="Models\HelpInformation.cs" />
-    <Compile Include="TextLocalization.cs" />
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,5 +103,6 @@
       <Name>Helpm8.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
