@@ -33,7 +33,12 @@ namespace Helpm8
 
         public string Key
         {
-            get { return _key ??= HelpPath.GetSectionKey(_path); }
+            get
+            {
+                _key ??= HelpPath.GetSectionKey(_path);
+
+                return _key ?? string.Empty;
+            }
         }
 
         public string Path => _path;

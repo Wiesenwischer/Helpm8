@@ -10,7 +10,7 @@ namespace Helpm8
         /// <summary>
         /// The chained help.
         /// </summary>
-        [DisallowNull]
+        //[DisallowNull]
         public IHelp? Help { get; set; }
 
         /// <summary>
