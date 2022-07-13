@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:helpm8 = "clr-namespace:Helpm8.Wpf;assembly=Helpm8.Wpf"
         mc:Ignorable="d"
-        Title="Helpm8 sample" Height="200" Width="400">
-    <Grid>
+        Title="{Binding Title}" Height="200" Width="400">
+    <Grid helpm8:HelpInfo.HelpContext="{Binding Path=Help}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <!-- Just a normal textbox which includes the helpm8Text -->
             <TextBox x:Name="sample_textbox" Background="LightGray" Margin="5" Text="i'm only a textbox" Width="200" 
-                     helpm8:HelpInfo.Helpm8Text="Delete my text and enter a new one!"/>
+                     helpm8:HelpInfo.Helpm8Text="TextBoxHelp" />
 
             <!-- Just a normal checkbox which includes the helpm8Text -->
             <CheckBox x:Name="sample_checkbox" Margin="5"  HorizontalAlignment="Center" Content="just a simple checkbox" 

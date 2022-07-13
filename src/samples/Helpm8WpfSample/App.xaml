@@ -1,8 +1,7 @@
 ﻿<Application x:Class="Helpm8WpfSample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Helpm8WpfSample"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Helpm8WpfSample">
     <Application.Resources>
          
     </Application.Resources>
