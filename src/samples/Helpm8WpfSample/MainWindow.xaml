@@ -26,14 +26,13 @@
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <!-- Just a normal textbox which includes the helpm8Text -->
-            <TextBox x:Name="sample_textbox" Background="LightGray" Margin="5" Text="i'm only a textbox" Width="200" 
+            <TextBox x:Name="SampleTextbox" Background="LightGray" Margin="5" Text="i'm only a textbox" Width="200" 
                      helpm8:HelpInfo.HelpKey="TextBoxHelp" />
 
             <!-- Just a normal checkbox which includes the helpm8Text -->
-            <CheckBox x:Name="sample_checkbox" Margin="5"  HorizontalAlignment="Center" Content="just a simple checkbox" 
+            <CheckBox x:Name="SampleCheckBox" Margin="5"  HorizontalAlignment="Center" Content="just a simple checkbox" 
                       helpm8:HelpInfo.HelpKey="CheckBoxHelp" />
         </StackPanel>
-
     </Grid>
 
 </Window>

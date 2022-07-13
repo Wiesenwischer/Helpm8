@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Helpm8.Wpf.Controls
 {
@@ -41,8 +29,7 @@ namespace Helpm8.Wpf.Controls
 
         /// <summary>
         /// Gets or sets the content that is shown in the content area of the popup.
-        /// Use the <see cref="Step.Content"/> to define the content to show. The default template shows the string representation of the content as text.
-        /// Use the <see cref="Step.ContentDataTemplateKey"/> to define a data template for displaying the content.
+        /// Use the <see cref="Content"/> to define the content to show. The default template shows the string representation of the content as text.
         /// </summary>
         public object Content
         {
@@ -53,27 +40,6 @@ namespace Helpm8.Wpf.Controls
         // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(HelpInfoControl), new PropertyMetadata(string.Empty));
-
-        /// <summary>
-        /// Gets or sets the header that is shown in the header area of the popup.
-        /// Use <see cref="Step.Header"/> to define the header to show. The default template shows the string representation of the header as text.
-        /// Use <see cref="Step.HeaderDataTemplateKey"/> to define a data template for displaying the header.
-        /// </summary>
-        public object Header
-        {
-            get { return (object)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(object), typeof(HelpInfoControl), new PropertyMetadata(string.Empty));
-
-        public Placement Placement
-        {
-            get { return (Placement)GetValue(PlacementProperty); }
-            set { SetValue(PlacementProperty, value); }
-        }
 
         // Using a DependencyProperty as the backing store for Placement.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PlacementProperty =

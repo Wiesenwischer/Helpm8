@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Helpm8;
 using Helpm8.Json;
-using Helpm8.Wpf;
-
 namespace Helpm8WpfSample
 {
     /// <summary>
