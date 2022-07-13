@@ -80,10 +80,10 @@ namespace Helpm8.Wpf
                 AllowsTransparency = true,
                 Child = hiControl,
                 PlacementTarget = (UIElement)d,
-                Placement = PlacementMode.Bottom
+                Placement = PlacementMode.Bottom,
+                StaysOpen = false
             };
-
-            d.MouseLeave += (sender, args) => { popup.IsOpen = false; };
+            
             d.MouseEnter += (sender, args) => { popup.IsOpen = true; };
         }
     }
