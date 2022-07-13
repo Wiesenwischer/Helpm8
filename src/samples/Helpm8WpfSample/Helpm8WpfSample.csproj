@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="help.customized.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="help.generated.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="help.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

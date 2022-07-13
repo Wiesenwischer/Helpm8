@@ -24,7 +24,9 @@ namespace Helpm8WpfSample
         private IHelp InitializeHelp()
         {
             var builder = new HelpBuilder();
-            builder.AddJsonFile("help.json");
+            builder.AddJsonFile("help.generated.json");
+            builder.AddJsonFile("help.json", true);
+            builder.AddJsonFile("help.customized.json", true);
             return builder.Build();
         }
     }
