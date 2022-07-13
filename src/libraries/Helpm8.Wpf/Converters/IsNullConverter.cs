@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace HelpInfo.Controls.Converters
+namespace Helpm8.Wpf.Converters
 {
     internal class IsNullConverter : IValueConverter
     {

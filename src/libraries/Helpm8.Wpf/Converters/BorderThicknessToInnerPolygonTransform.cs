@@ -2,8 +2,9 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using Helpm8.Wpf.Controls;
 
-namespace Helpm8.Wpf.Controls
+namespace Helpm8.Wpf.Converters
 {
     public class BorderThicknessToInnerPolygonTransform : IValueConverter
     {
