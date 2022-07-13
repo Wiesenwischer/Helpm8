@@ -77,17 +77,20 @@ namespace Helpm8.Wpf
             if (d == null) return;
             if (string.IsNullOrEmpty(helpText)) return;
 
-            var hiControl = new HelpInfoControl();
-            hiControl.Content = helpText;
+            var hiControl = new HelpInfoControl
+            {
+                Content = helpText
+            };
 
-            var popup = new Popup();
-            popup.AllowsTransparency = true;
-            popup.Child = hiControl;
-            popup.PlacementTarget = (UIElement)d;
-            popup.Placement = PlacementMode.Bottom;
+            var popup = new Popup
+            {
+                AllowsTransparency = true,
+                Child = hiControl,
+                PlacementTarget = (UIElement)d,
+                Placement = PlacementMode.Bottom
+            };
 
             d.MouseLeave += (sender, args) => { popup.IsOpen = false; };
-
             d.MouseEnter += (sender, args) => { popup.IsOpen = true; };
         }
     }
