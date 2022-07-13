@@ -7,19 +7,19 @@ namespace Helpm8.Wpf
 {
     public class HelpInfo : DependencyObject
     {
-        public static string GetHelpm8Text(DependencyObject obj)
+        public static string GetHelpKey(DependencyObject obj)
         {
-            return (string)obj.GetValue(Helpm8TextProperty);
+            return (string)obj.GetValue(HelpKeyProperty);
         }
 
-        public static void SetHelpm8Text(DependencyObject obj, string value)
+        public static void SetHelpKey(DependencyObject obj, string value)
         {
-            obj.SetValue(Helpm8TextProperty, value);
+            obj.SetValue(HelpKeyProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Helpm8Text.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Helpm8TextProperty =
-            DependencyProperty.RegisterAttached("Helpm8Text", typeof(string), typeof(HelpInfo),
+        // Using a DependencyProperty as the backing store for HelpKey.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HelpKeyProperty =
+            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo),
                 new PropertyMetadata(null, OnHelpTextChanged));
 
         public static object GetHelpContext(DependencyObject obj)
@@ -55,7 +55,7 @@ namespace Helpm8.Wpf
         private static void UpdateHelpText(DependencyObject d)
         {
             var ctx = d.GetValue(HelpContextProperty) as IHelp;
-            var key = d.GetValue(Helpm8TextProperty) as string;
+            var key = d.GetValue(HelpKeyProperty) as string;
             
             if (ctx != null && string.IsNullOrEmpty(key) == false)
             {
