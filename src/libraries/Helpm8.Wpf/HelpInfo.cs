@@ -1,18 +1,11 @@
-using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Messaging;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using System.Windows.Media;
-using Helpm8.Wpf.Models;
 using Helpm8.Wpf.Controls;
-
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace Helpm8.Wpf
 {
-    public class HelpInfo
+    public class HelpInfo : DependencyObject
     {
         public static string GetHelpm8Text(DependencyObject obj)
         {
@@ -26,63 +19,76 @@ namespace Helpm8.Wpf
 
         // Using a DependencyProperty as the backing store for Helpm8Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty Helpm8TextProperty =
-            DependencyProperty.RegisterAttached("Helpm8Text", typeof(string), typeof(HelpInfo), new PropertyMetadata("Kein Value", OnHelpTextChanged));
+            DependencyProperty.RegisterAttached("Helpm8Text", typeof(string), typeof(HelpInfo),
+                new PropertyMetadata(null, OnHelpTextChanged));
 
-        private static void OnHelpTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static object GetHelpContext(DependencyObject obj)
         {
+            return obj.GetValue(HelpContextProperty);
+        }
 
-            if (d is UIElement uiElement)
+        public static void SetHelpContext(DependencyObject obj, object value)
+        {
+            obj.SetValue(HelpContextProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for HelpContext.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HelpContextProperty =
+            DependencyProperty.RegisterAttached("HelpContext", typeof(object), typeof(HelpInfo),
+                new FrameworkPropertyMetadata
+                {
+                    Inherits = true,
+                    IsNotDataBindable = false,
+                    DefaultValue = null,
+                    PropertyChangedCallback = OnHelpContextChanged
+                });
+
+
+        private static void OnHelpContextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var x = e.NewValue;
+            Debug.WriteLine($"HelpContext changed on: {d.GetType().Name}");
+
+            UpdateHelpText(d);
+        }
+
+        private static void UpdateHelpText(DependencyObject d)
+        {
+            var ctx = d.GetValue(HelpContextProperty) as IHelp;
+            var key = d.GetValue(Helpm8TextProperty) as string;
+            
+            if (ctx != null && string.IsNullOrEmpty(key) == false)
             {
-                var textblock = new TextBlock();
-                textblock.Text = e.NewValue as string;
-                textblock.Background = Brushes.White;
-                textblock.Foreground = Brushes.White;
-
-                var helpInformation = new HelpInformation()
-                {
-                    Key = GetHelpKey(d),
-                    Header = GetHelpKey(d) as object,
-                    Content = e.NewValue
-                };
-
-
-                var hiControl = new HelpInfoControl();
-                
-
-                var popup = new Popup();
-                popup.AllowsTransparency = true;
-                popup.Child = hiControl;
-                (popup.Child as FrameworkElement).DataContext = helpInformation;
-                popup.PlacementTarget = (UIElement)d;
-                popup.Placement = PlacementMode.Bottom;
-
-
-                uiElement.MouseLeave += (sender, args) =>
-                {
-                    popup.IsOpen = false;
-                };
-
-                uiElement.MouseEnter += (sender, args) =>
-                {
-                    popup.IsOpen = true;
-                };
-                
-
+                var helpText = ctx[key];
+                BuildHelpInfo(d as UIElement, helpText);
             }
         }
 
-        public static string GetHelpKey(DependencyObject obj)
+        private static void OnHelpTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            return (string)obj.GetValue(HelpKeyProperty);
+            var x = e.NewValue;
+            Debug.WriteLine($"HelpText changed on: {d.GetType().Name}");
+
+            UpdateHelpText(d);
         }
 
-        public static void SetHelpKey(DependencyObject obj, string value)
+        private static void BuildHelpInfo(UIElement d, string helpText)
         {
-            obj.SetValue(HelpKeyProperty, value);
-        }
+            if (d == null) return;
+            if (string.IsNullOrEmpty(helpText)) return;
 
-        // Using a DependencyProperty as the backing store for HelpKey.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HelpKeyProperty =
-            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo), new PropertyMetadata("Key is empty"));
+            var hiControl = new HelpInfoControl();
+            hiControl.Content = helpText;
+
+            var popup = new Popup();
+            popup.AllowsTransparency = true;
+            popup.Child = hiControl;
+            popup.PlacementTarget = (UIElement)d;
+            popup.Placement = PlacementMode.Bottom;
+
+            d.MouseLeave += (sender, args) => { popup.IsOpen = false; };
+
+            d.MouseEnter += (sender, args) => { popup.IsOpen = true; };
+        }
     }
 }

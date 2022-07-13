@@ -99,6 +99,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Helpm8.Core\Helpm8.Core.csproj">
+      <Project>{6bd756b2-9e4f-4712-bacd-8c186b4621f5}</Project>
+      <Name>Helpm8.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
