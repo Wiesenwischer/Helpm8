@@ -1,4 +1,3 @@
-using System;
 using Helpm8.Wpf.Controls;
 using System;
 using System.Collections.Concurrent;
