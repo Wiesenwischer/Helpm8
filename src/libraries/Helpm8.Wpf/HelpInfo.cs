@@ -128,7 +128,8 @@ namespace Helpm8.Wpf
 
             var hiControl = new HelpInfoControl
             {
-                Content = Configurator.ContentProvider.GetContentFor(helpText)
+                Content = Configurator.ContentProvider.GetContentFor(helpText),
+                Placement = Placement.BottomLeft
             };
 
             d.LostFocus += (sender, args) => { _popup.IsOpen = false; };
