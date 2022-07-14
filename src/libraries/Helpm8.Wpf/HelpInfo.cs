@@ -1,3 +1,4 @@
+using System;
 using Helpm8.Wpf.Controls;
 using System.Collections.Concurrent;
 using System.Windows;
@@ -9,6 +10,7 @@ namespace Helpm8.Wpf
     public class HelpInfo : DependencyObject
     {
         private static bool _canShowHelp = true;
+
 
         static HelpInfo()
         {
@@ -117,6 +119,7 @@ namespace Helpm8.Wpf
             UpdateHelpText(d);
         }
 
+
         private static readonly ConcurrentDictionary<UIElement, Popup> _popupCache = new ConcurrentDictionary<UIElement, Popup>();
 
         private static void BuildHelpInfo(UIElement d, string helpText)
@@ -126,7 +129,8 @@ namespace Helpm8.Wpf
 
             var hiControl = new HelpInfoControl
             {
-                Content = helpText
+                Content = helpText,
+                Placement = Placement.RightBottom
             };
 
             var po = _popupCache.GetOrAdd(d, (target) =>
@@ -135,7 +139,7 @@ namespace Helpm8.Wpf
                  {
                      AllowsTransparency = true,
                      PlacementTarget = target,
-                     Placement = PlacementMode.Bottom
+                     Placement = PlacementMode.Right
                  };
 
                  d.MouseLeave += (sender, args) => { popup.IsOpen = false; };
@@ -145,5 +149,6 @@ namespace Helpm8.Wpf
 
             po.Child = hiControl;
         }
+
     }
 }

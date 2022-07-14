@@ -35,7 +35,7 @@
                         <Style TargetType="Polygon" x:Key="PolygonStyle">
                             <Setter Property="StrokeThickness" Value="1" />
                             <Setter Property="Fill" Value="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}" />
-                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="HorizontalAlignment" Value="center" />
                             <Setter Property="VerticalAlignment" Value="Center" />
                         </Style>
                         <Style TargetType="Polygon" x:Key="InnerPolygonStyle" BasedOn="{StaticResource PolygonStyle}">
@@ -58,33 +58,42 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="1" Grid.Column="0" x:Name="PopupArea"
+                        <Border Grid.Row="1" Grid.Column="1" x:Name="PopupArea"
                                 CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}"
                                 BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl}}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}">
                             <Grid Margin="2 1 0 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
                                 <ContentControl Content="{TemplateBinding Content}" Margin="2, 5, 10, 5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                                 ContentTemplate="{Binding ContentTemplate, Converter={StaticResource ContentDefaultTemplateIfNullConverter}}"
                                                 Foreground="{TemplateBinding Foreground}" />
                             </Grid>
                         </Border>
 
-                        <Grid Grid.Row="0" Grid.Column="0" 
-                              HorizontalAlignment="{Binding ActualPlacement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
-                              Visibility="{Binding ActualPlacement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
+
+                        <!-- TOP -->
+                        <Grid Grid.Row="0" Grid.ColumnSpan="3"
+                              HorizontalAlignment="{TemplateBinding Placement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
+                              Visibility="{TemplateBinding Placement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Top}}"
                               Margin="{Binding BorderThickness, 
                                                RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
                                                Converter={StaticResource BorderThicknessToContainerMarginConverter},
                                                ConverterParameter={x:Static controls:BorderSide.Top}}">
-                            <Polygon Points="0,13 13,0 26,13 0,13" Style="{StaticResource PolygonStyle}" />
-                            <Polygon Points="0,13 13,0 26,13 0,13"  Style="{StaticResource InnerPolygonStyle}">
+                            <Polygon Points="0,20 20,0 40,20 0,20" Style="{StaticResource PolygonStyle}" />
+                            <Polygon Points="0,20 20,0 40,20 0,20"  Style="{StaticResource InnerPolygonStyle}">
                                 <Polygon.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform ScaleX="1.01" ScaleY="1.01" CenterX="20" CenterY="10" />
@@ -96,6 +105,74 @@
                                 </Polygon.RenderTransform>
                             </Polygon>
                         </Grid>
+
+                        <!-- Bottom -->
+                        <Grid Grid.Row="2" Grid.ColumnSpan="3"
+                              HorizontalAlignment="{TemplateBinding Placement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
+                              Visibility="{TemplateBinding Placement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Bottom}}"
+                              Margin="{Binding BorderThickness, 
+                                               RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                               Converter={StaticResource BorderThicknessToContainerMarginConverter},
+                                               ConverterParameter={x:Static controls:BorderSide.Bottom}}">
+                            <Polygon Points="0,0 20,20 40,0" Style="{StaticResource PolygonStyle}" />
+                            <Polygon Points="0,0 20,20 40,0" Style="{StaticResource InnerPolygonStyle}">
+                                <Polygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" CenterX="20" CenterY="10" />
+                                        <TranslateTransform Y="{Binding BorderThickness, 
+                                                                        RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                                                        Converter={StaticResource BorderThicknessToInnerPolygonTransform},
+                                                                        ConverterParameter={x:Static controls:BorderSide.Bottom}}" />
+                                    </TransformGroup>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+                        </Grid>
+
+                        <!-- Left -->
+                        <Grid Grid.Column="0" Grid.RowSpan="3"
+                              VerticalAlignment="{TemplateBinding Placement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
+                              Visibility="{TemplateBinding Placement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Left}}"
+                              Margin="{Binding BorderThickness, 
+                                               RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                               Converter={StaticResource BorderThicknessToContainerMarginConverter},
+                                               ConverterParameter={x:Static controls:BorderSide.Left}}">
+                            <Polygon Points="20,0 0,20 20,40 20,0" Style="{StaticResource PolygonStyle}" />
+                            <Polygon Points="20,0 0,20 20,40 20,0" Style="{StaticResource InnerPolygonStyle}">
+                                <Polygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" CenterX="10" CenterY="20" />
+                                        <TranslateTransform X="{Binding BorderThickness, 
+                                                                        RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                                                        Converter={StaticResource BorderThicknessToInnerPolygonTransform},
+                                                                        ConverterParameter={x:Static controls:BorderSide.Left}}" />
+                                    </TransformGroup>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+                        </Grid>
+
+                        <!-- Right -->
+                        <Grid Grid.Column="2" Grid.RowSpan="3"
+                              VerticalAlignment="{TemplateBinding Placement, Converter={StaticResource PlacementToAlignmentConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
+                              Visibility="{TemplateBinding Placement, Converter={StaticResource PlacementToVisibilityConverter}, ConverterParameter={x:Static controls:BorderSide.Right}}"
+                              Margin="{Binding BorderThickness, 
+                                               RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                               Converter={StaticResource BorderThicknessToContainerMarginConverter},
+                                               ConverterParameter={x:Static controls:BorderSide.Right}}">
+                            <Polygon Points="0,0 20,20 0,40 0,0" Style="{StaticResource PolygonStyle}" />
+                            <Polygon Points="0,0 20,20 0,40 0,0" Style="{StaticResource InnerPolygonStyle}">
+                                <Polygon.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" CenterX="10" CenterY="20" />
+                                        <TranslateTransform X="{Binding BorderThickness, 
+                                                                        RelativeSource={RelativeSource FindAncestor, AncestorType=controls:HelpInfoControl},
+                                                                        Converter={StaticResource BorderThicknessToInnerPolygonTransform},
+                                                                        ConverterParameter={x:Static controls:BorderSide.Right}}" />
+                                    </TransformGroup>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+                        </Grid>
+
+
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

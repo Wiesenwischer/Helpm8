@@ -41,6 +41,12 @@ namespace Helpm8.Wpf.Controls
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(HelpInfoControl), new PropertyMetadata(string.Empty));
 
+        public Placement Placement
+        {
+            get { return (Placement)GetValue(PlacementProperty); }
+            set { SetValue(PlacementProperty, value); }
+        }
+
         // Using a DependencyProperty as the backing store for Placement.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PlacementProperty =
             DependencyProperty.Register("Placement", typeof(Placement), typeof(HelpInfoControl), new PropertyMetadata(Placement.LeftBottom));
