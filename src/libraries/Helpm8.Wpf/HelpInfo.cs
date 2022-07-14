@@ -118,9 +118,6 @@ namespace Helpm8.Wpf
             UpdateHelpText(d);
         }
 
-
-        private static readonly ConcurrentDictionary<UIElement, Popup> _popupCache = new ConcurrentDictionary<UIElement, Popup>();
-
         private static void BuildHelpInfo(UIElement d, string helpText)
         {
             if (d == null) return;
