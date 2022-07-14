@@ -1,5 +1,6 @@
 using System;
 using Helpm8.Wpf.Controls;
+using System;
 using System.Collections.Concurrent;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -31,14 +32,7 @@ namespace Helpm8.Wpf
             _canShowHelp = !_canShowHelp;
             SetIsHelpActive(args.OriginalSource as DependencyObject, _canShowHelp);
 
-            foreach (var cachedItem in _popupCache)
-            {
-                cachedItem.Value.IsOpen = false;
-                if (_canShowHelp && cachedItem.Key.IsMouseOver)
-                {
-                    cachedItem.Value.IsOpen = true;
-                }
-            }
+            _popup.IsOpen = _canShowHelp;
         }
 
         public static string GetHelpKey(DependencyObject obj)
@@ -54,7 +48,7 @@ namespace Helpm8.Wpf
         // Using a DependencyProperty as the backing store for HelpKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HelpKeyProperty =
             DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpInfo),
-                new PropertyMetadata(null, OnHelpTextChanged));
+                new PropertyMetadata(null, OnHelpKeyChanged));
 
         public static IHelp GetHelpContext(DependencyObject obj)
         {
@@ -114,8 +108,14 @@ namespace Helpm8.Wpf
             }
         }
 
-        private static void OnHelpTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHelpKeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d is UIElement uiElement)
+            {
+                HelpTargetAvailable?.Invoke(null, new HelpTargetEventArgs(uiElement));
+            }
+
+
             UpdateHelpText(d);
         }
 
@@ -129,26 +129,72 @@ namespace Helpm8.Wpf
 
             var hiControl = new HelpInfoControl
             {
-                Content = helpText,
-                Placement = Placement.RightBottom
+                Content = Configurator.ContentProvider.GetContentFor(helpText)
             };
 
-            var po = _popupCache.GetOrAdd(d, (target) =>
-             {
-                 var popup = new Popup
-                 {
-                     AllowsTransparency = true,
-                     PlacementTarget = target,
-                     Placement = PlacementMode.Right
-                 };
-
-                 d.MouseLeave += (sender, args) => { popup.IsOpen = false; };
-                 d.MouseEnter += (sender, args) => { popup.IsOpen = _canShowHelp; };
-                 return popup;
-             });
-
-            po.Child = hiControl;
+            d.LostFocus += (sender, args) => { _popup.IsOpen = false; };
+            d.GotFocus += (sender, args) =>
+            {
+                _popup.IsOpen = false;
+                _popup.Child = hiControl;
+                _popup.PlacementTarget = d;
+                _popup.PopupAnimation = PopupAnimation.Slide;
+                _popup.IsOpen = _canShowHelp;
+            };
         }
 
+        private static Popup _popup = new Popup
+        {
+            AllowsTransparency = true,
+            Placement = PlacementMode.Bottom
+        };
+        
+        public static void Configure(Action<IConfigureHelpInfo> config)
+        {
+            config(Configurator);
+        }
+
+        public static IConfigureHelpInfo Configure()
+        {
+            return Configurator;
+        }
+
+        public static IConfigureHelpInfo Configurator { get; } = new HelpInfoConfigurator();
+
+        public static event EventHandler<HelpTargetEventArgs> HelpTargetAvailable;
+
+    }
+
+    public class HelpTargetEventArgs : EventArgs
+    {
+        public HelpTargetEventArgs(UIElement target)
+        {
+            Target = target;
+        }
+
+        public UIElement Target { get; }
+    }
+
+    public class HelpInfoConfigurator : IConfigureHelpInfo
+    {
+        public IContentProvider ContentProvider { get; set; } = new TextContentProvider();
+    }
+
+    public interface IConfigureHelpInfo
+    {
+        IContentProvider ContentProvider { get; set; }
+    }
+
+    public interface IContentProvider
+    {
+        object GetContentFor(string helpText);
+    }
+
+    public class TextContentProvider : IContentProvider
+    {
+        public object GetContentFor(string helpText)
+        {
+            return helpText;
+        }
     }
 }
