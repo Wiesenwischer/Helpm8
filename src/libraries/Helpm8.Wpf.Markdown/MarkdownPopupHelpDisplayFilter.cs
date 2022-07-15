@@ -16,13 +16,7 @@ namespace Helpm8.Wpf.Markdown
             MdXaml.Markdown engine = new MdXaml.Markdown();
             string markdowntext = $@"
 # %{{color:blue}}Feldname%
-
-## Dies ist eine Feldbeschreibung
-
-> {helpContext.HelpText}
-> |Dienst|Feld|Typ|
-> |------|----|---|
-> |ANGD400|AUFPOS|Numeric 8.3|";
+{helpContext.HelpText}";
             var control = new MarkdownScrollViewer();
             control.MarkdownStyleName = "GithubLike";
             control.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;

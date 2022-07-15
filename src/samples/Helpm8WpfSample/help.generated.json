@@ -1,6 +1,6 @@
 ﻿{
-  "TextBoxHelp": "Ich bin eine Textbox und diese Hilfe wurde generiert.",
-  "IncludeDefaultCheckBoxHelp": "Wenn ich angehakt bin wird die Datei help.default.json in die Hilfe inkludiert.\n\r> Dieser Hilfetext wurde generiert.",
-  "IncludeCustomizedCheckBoxHelp": "Wenn ich angehakt bin wird die Datei help.customized.json in die Hilfe inkludiert.\n\r> Dieser Hilfetext wurde generiert.",
-  "ButtonHelp": "Ich bin ein Button.\n\r> Dieser Hilfetext wurde generiert."
+  "TextBoxHelp": "Ich bin eine Textbox.\n\rDieser Hilfetext wurde generiert.",
+  "IncludeDefaultCheckBoxHelp": "Wenn ich angehakt bin wird die Datei help.default.json in die Hilfe inkludiert.\n\rDieser Hilfetext wurde generiert.",
+  "IncludeCustomizedCheckBoxHelp": "Wenn ich angehakt bin wird die Datei help.customized.json in die Hilfe inkludiert.\n\rDieser Hilfetext wurde generiert.",
+  "ButtonHelp": "Ich bin ein Button.\n\rDieser Hilfetext wurde generiert."
 }

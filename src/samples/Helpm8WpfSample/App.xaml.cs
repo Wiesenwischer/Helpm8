@@ -19,11 +19,19 @@ namespace Helpm8WpfSample
             var viewModel = new MainWindowViewModel();
             var pipe = Pipe.New<RequestHelpContext>(cfg =>
             {
+                var technicalHelp = new HelpBuilder()
+                    .AddJsonFile("help.technical.json", true)
+                    .Build();
+
+                cfg.UseFilter(new ProvideAdditionalHelpFilter(technicalHelp));
+                cfg.UseFilter(new AppendHelpFilter<IProvideAdditionalHelpContext>());
+
 #if MD
                 var popupHelpDisplayFilter = CreateMarkdownFilter(viewModel);
 #else
                 var popupHelpDisplayFilter = CreatePopupFilter(viewModel);
 #endif
+
                 cfg.UseFilter(popupHelpDisplayFilter);
             });
             //var requestHandler = new HelpRequestHandler(new HelpInfoKeyProvider(), new MainWindowViewModelHelpProvider(viewModel), pipe);
