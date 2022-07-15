@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using System.IO.Pipes;
-using System.Windows;
-using System.Windows.Controls.Primitives;
-using GreenPipes;
+﻿using GreenPipes;
 using Helpm8;
 using Helpm8.Json;
 using Helpm8.Wpf;
 using Helpm8.Wpf.Markdown;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace Helpm8WpfSample
 {
@@ -34,8 +33,10 @@ namespace Helpm8WpfSample
             var requestHandler = new HelpRequestHandler(new HelpInfoKeyProvider(), new HelpInfoContextProvider(), pipe);
             var observer = new HelpInfoObserver(requestHandler);
             observer.StartObserving();
-            var view = new MainWindow();
-            view.DataContext = viewModel;
+            var view = new MainWindow
+            {
+                DataContext = viewModel
+            };
             view.Show();
         }
 

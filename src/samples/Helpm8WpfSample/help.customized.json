@@ -1,4 +1,3 @@
 ﻿{
-  "ButtonHelp": "Ich bin ein Button und diese Hilfe überschreibt den Standard",
-  "CheckBoxHelp":  "Überschrieben" 
+  "ButtonHelp": "Ich bin ein Button und überschreibe den Standard"
 }
