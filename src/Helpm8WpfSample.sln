@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Core", "libraries\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.UnitTests", "libraries\Helpm8.UnitTests\Helpm8.UnitTests.csproj", "{106D43FA-18F3-4ACA-8771-EBC68CADE3A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpm8.Wpf.Markdown", "libraries\Helpm8.Wpf.Markdown\Helpm8.Wpf.Markdown.csproj", "{4344308B-8267-4598-94B8-E9348A02CB5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpm8.Wpf.Markdown", "libraries\Helpm8.Wpf.Markdown\Helpm8.Wpf.Markdown.csproj", "{4344308B-8267-4598-94B8-E9348A02CB5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FB56221C-BB19-4BC4-9B18-0E4A09F74F79}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

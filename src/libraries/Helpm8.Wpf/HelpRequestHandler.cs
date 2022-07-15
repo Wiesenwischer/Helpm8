@@ -21,7 +21,10 @@ namespace Helpm8.Wpf
         public async Task RequestHelpFor(UIElement target)
         {
             var key = _helpKeyProvider.GetHelpKeyFor(target);
+            if (key == null) return;
+
             var help = _helpContextProvider.GetHelpContextFor(target);
+            if (help == null) return;
             
             var helpText = help[key];
             var context = new RequestHelpContext()

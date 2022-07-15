@@ -1,4 +1,4 @@
 ﻿{
   "CheckBoxHelp": "Ich bin eine Checkbox und überschreibe die generierte Hilfe",
-  "ButtonHelp": "Ich bin ein Button und überschreibe die generierte Hilfe"
+  "ButtonHelp": "Ich bin ein Button.\n\r> Dieser Hilfetext entspricht dem Standard."
 }
