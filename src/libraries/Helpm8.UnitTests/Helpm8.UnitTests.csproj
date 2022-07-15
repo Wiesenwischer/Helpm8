@@ -4,6 +4,8 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 
 		<IsPackable>false</IsPackable>
+
+		<Configurations>Debug;Release;Debug.md</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -12,6 +14,10 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.md|AnyCPU'">
+	  <LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

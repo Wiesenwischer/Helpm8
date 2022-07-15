@@ -4,6 +4,19 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Debug.md</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.md|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;MD</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\libraries\Helpm8.Core\Helpm8.Core.csproj" />
     <ProjectReference Include="..\..\libraries\Helpm8.Json\Helpm8.Json.csproj" />
+    <ProjectReference Include="..\..\libraries\Helpm8.Wpf.Markdown\Helpm8.Wpf.Markdown.csproj" />
     <ProjectReference Include="..\..\libraries\Helpm8.Wpf\Helpm8.Wpf.csproj" />
   </ItemGroup>
 

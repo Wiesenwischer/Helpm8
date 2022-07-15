@@ -6,6 +6,7 @@ using GreenPipes;
 using Helpm8;
 using Helpm8.Json;
 using Helpm8.Wpf;
+using Helpm8.Wpf.Markdown;
 
 namespace Helpm8WpfSample
 {
@@ -23,11 +24,12 @@ namespace Helpm8WpfSample
             };
             var pipe = Pipe.New<RequestHelpContext>(cfg =>
             {
+#if MD
+                var popupHelpDisplayFilter = CreateMarkdownFilter(viewModel);
+#else
                 var popupHelpDisplayFilter = CreatePopupFilter(viewModel);
-                
-
+#endif
                 cfg.UseFilter(popupHelpDisplayFilter);
-
             });
             var requestHandler = new HelpRequestHandler(new HelpInfoKeyProvider(), new HelpInfoContextProvider(), pipe);
             var observer = new HelpInfoObserver(requestHandler);
@@ -46,7 +48,12 @@ namespace Helpm8WpfSample
             return builder.Build();
         }
 
-
+        private IFilter<RequestHelpContext> CreateMarkdownFilter(MainWindowViewModel viewModel)
+        {
+            var markdownPopupHelpDisplayFilter = new MarkdownPopupHelpDisplayFilter(PlacementMode.Bottom, CustomCommands.Guidance);
+            markdownPopupHelpDisplayFilter.Attach(viewModel);
+            return markdownPopupHelpDisplayFilter;
+        }
 
         private IFilter<RequestHelpContext> CreatePopupFilter(MainWindowViewModel viewModel)
         {
