@@ -34,7 +34,7 @@ runs:
         NET_FRAMEWORK_VERSION: net48
     - name: Restore .NET
       shell: bash
-      run: dotnet restore ${{ inputs.solution_path }} -f net48      
+      run: dotnet restore ${{ inputs.solution_path }}       
     - name: Build and run unit tests
       shell: bash
       run: |
