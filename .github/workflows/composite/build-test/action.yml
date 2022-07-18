@@ -21,14 +21,14 @@ runs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 3.1.x
+        dotnet-version: net48
       env:
         NET_CORE_VERSION: netcoreapp3.1
         NET_FRAMEWORK_VERSION: net48
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: net48
       env:
         NET_CORE_VERSION: netcoreapp3.1
         NET_FRAMEWORK_VERSION: net48
