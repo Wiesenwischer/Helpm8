@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - add-helpm8-wpf-library
 
     paths:
       - src/libraries/**
