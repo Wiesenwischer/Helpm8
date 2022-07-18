@@ -38,9 +38,6 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
-    strategy:
-       matrix:
-        conf: ["", "-f net48"]
     if: ${{ github.event_name != 'pull_request'}}
     steps:
       - name: Checkout code
@@ -51,3 +48,16 @@ jobs:
           solution_path: src/Libraries.sln
           tests_path: src/libraries/Helpm8.UnitTests
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  # BuildWin:
+  #   runs-on: windows-latest
+  #   if: ${{ github.event_name != 'pull_request'}}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/composite/build-test
+  #       with:
+  #         dotnet_version: net48
+  #         solution_path: src/Helpm8WpfSample.sln
+  #         tests_path: src/libraries/Helpm8.UnitTests
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
