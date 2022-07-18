@@ -22,18 +22,24 @@ runs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
+      env:
+        NET_CORE_VERSION: netcoreapp3.1
+        NET_FRAMEWORK_VERSION: net48
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+      env:
+        NET_CORE_VERSION: netcoreapp3.1
+        NET_FRAMEWORK_VERSION: net48
     - name: Restore .NET
       shell: bash
-      run: dotnet restore ${{ inputs.solution_path }}        
+      run: dotnet restore ${{ inputs.solution_path }} -f net48      
     - name: Build and run unit tests
       shell: bash
       run: |
-        dotnet build ${{ inputs.solution_path }} --no-restore
-        dotnet test ${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70
+        dotnet build ${{ inputs.solution_path }} --no-restore -f net48   
+        dotnet test ${{ inputs.tests_path }} --no-build -v=normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/coverage.json /p:CoverletOutputFormat=lcov /p:Threshold=70 -f net48   
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
