@@ -38,6 +38,9 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
+    strategy:
+       matrix:
+        conf: ["", "-f net48"]
     if: ${{ github.event_name != 'pull_request'}}
     steps:
       - name: Checkout code
