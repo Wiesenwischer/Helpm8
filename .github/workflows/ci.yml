@@ -33,6 +33,8 @@ jobs:
           dotnet-version: 6.0.x
       - name: Build
         run: dotnet build src/libraries/Helpm8.Core --configuration Release
+      - name: Pack
+        run: dotnet pack src/libraries/Helpm8.Core --configuration Release        
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
