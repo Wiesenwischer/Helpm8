@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>net472;net6.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
-		<RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
+		<RootNamespace>Helpm8</RootNamespace>
 		<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
