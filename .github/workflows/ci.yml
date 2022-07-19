@@ -39,7 +39,7 @@ jobs:
           configFilePath: ./.github/GitVersion.yml
       - name: Display SemVer
         run: |
-          echo "SemVer: ${{ steps.gitversion.outputs.semVer }}""            
+          echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"            
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v2
         with:
