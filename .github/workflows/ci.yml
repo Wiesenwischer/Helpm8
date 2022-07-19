@@ -55,14 +55,8 @@ jobs:
           dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
           cd nugets/
           dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
-      - name: Pack
-        if: matrix.name == 'Linux'
-        run: dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
-      - name: Push
-        if: matrix.name == 'Linux'
-        run: dotnet nuget push ./nugets/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}                
       - name: Upload packages
-        if: matrix.name == 'Linux'
+        if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
         with:
           name: NuGet packages
