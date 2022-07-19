@@ -49,6 +49,13 @@ jobs:
           steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
+      - name: Pack and publish
+        if: matrix.name == 'Windows'
+        shell: bash
+        run: |
+          dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
+          cd nugets/
+          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
       - name: Pack
         if: matrix.name == 'Linux'
         run: dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
