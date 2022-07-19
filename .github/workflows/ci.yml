@@ -37,7 +37,6 @@ jobs:
         with:
           useConfigFile: true
           configFilePath: ./.github/GitVersion.yml
-          updateAssembyInfo: true
       - name: Display SemVer
         run: |
           echo "SemVer: $GITVERSION_SEMVER"            
@@ -52,10 +51,10 @@ jobs:
           steps.gitversion.outputs.InformationalVersion }} 
       - name: Pack
         if: matrix.name == 'Windows'
-        run: dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
+        run: dotnet pack src/libraries/Helpm8.Core --configuration Release -o:./nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
       - name: Push
         if: matrix.name == 'Windows'
-        run: dotnet nuget push nugets/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}                
+        run: dotnet nuget push ./nugets/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}                
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
