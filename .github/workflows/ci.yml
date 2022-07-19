@@ -51,9 +51,11 @@ jobs:
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
       - name: Pack
+        if: matrix.name == 'Windows'
         run: dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
       - name: Push
-        run: dotnet nuget push ./nugets/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}                
+        if: matrix.name == 'Windows'
+        run: dotnet nuget push nugets/*.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}                
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
