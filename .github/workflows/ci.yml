@@ -43,10 +43,6 @@ jobs:
       - name: Display SemVer
         run: |
           echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"            
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
       - name: Build ${{ matrix.name }}
         uses: ./.github/workflows/composite/build-package
         with:
