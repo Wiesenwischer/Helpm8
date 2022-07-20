@@ -58,13 +58,13 @@ jobs:
         run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal
       - name: Run tests with coverage
         if: matrix.name == 'Windows'
-        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/Helpm8.Core.info /p:CoverletOutputFormat=lcov
       - name: Publish coverage report to coveralls.io
         if: matrix.name == 'Windows'
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: TestResults/coverage.json
+          path-to-lcov: TestResults/Helpm8.Core.info
       - name: Pack and publish
         if: matrix.name == 'Windows'
         run: |
