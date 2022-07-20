@@ -43,10 +43,10 @@ namespace Helpm8
         /// </summary>
         /// <param name="path">The path.</param>
         /// <returns>The last path segment of the path.</returns>
-        [return: NotNullIfNotNull("path")]
+        //[return: NotNullIfNotNull("path")]
         public static string? GetSectionKey(string? path)
         {
-            if (string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path) || path == null)
             {
                 return path;
             }
@@ -62,7 +62,7 @@ namespace Helpm8
         /// <returns>The original path minus the last individual segment found in it. Null if the original path corresponds to a top level node.</returns>
         public static string? GetParentPath(string? path)
         {
-            if (string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path) || path == null)
             {
                 return null;
             }

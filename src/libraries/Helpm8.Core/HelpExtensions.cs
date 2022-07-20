@@ -44,7 +44,7 @@ namespace Helpm8
         /// </summary>
         /// <param name="section">The section to enumerate.</param>
         /// <returns><see langword="true" /> if the section has values or children; otherwise, <see langword="false" />.</returns>
-        public static bool Exists([NotNullWhen(true)] this IHelpSection? section)
+        public static bool Exists(this IHelpSection? section)
         {
             if (section == null)
             {
