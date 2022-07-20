@@ -32,7 +32,7 @@ runs:
         dotnet-version: 6.0.x
     - name: Build
       shell: bash
-      run: dotnet build ${{ inputs.project-path }} --configuration Release  /p:Version=${{ 
+      run: dotnet build ${{ inputs.project-path }} --configuration Release /p:Version=${{ 
         inputs.assembly-version }} /p:AssemblyVersion=${{
         inputs.assembly-version }} /p:InformationalVersion=${{
         inputs.informational-version }} 

@@ -51,8 +51,8 @@ jobs:
         uses: ./.github/workflows/composite/build-package
         with:
           project-path: src/libraries/Helpm8.Core
-          assembly-version: $ {{ steps.gitversion.outputs.AssemblySemVer }}
-          informational-version: $ {{ steps.gitversion.outputs.InformationalVersion }}
-          package-version: $ {{ steps.gitversion.outputs.NuGetVersion }}
+          assembly-version: ${{ steps.gitversion.outputs.AssemblySemVer }}
+          informational-version: ${{ steps.gitversion.outputs.InformationalVersion }}
+          package-version: ${{ steps.gitversion.outputs.NuGetVersion }}
           publish: matrix.name == 'Windows'
           github-token: ${{ secrets.GITHUB_TOKEN }}          
