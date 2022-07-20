@@ -47,9 +47,10 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - uses: ./.github/workflows/composite/build-package
+      - name: Build ${{ matrix.name }}
+        uses: .github/workflows/composite/build-package
         with:
-          project-path: src/Helpm8WpfSample.sln
+          project-path: src/libraries/Helpm8.Core
           assembly-version: $ {{ steps.gitversion.outputs.AssemblySemVer }}
           informational-version: $ {{ steps.gitversion.outputs.InformationalVersion }}
           package-version: $ {{ steps.gitversion.outputs.NuGetVersion }}
