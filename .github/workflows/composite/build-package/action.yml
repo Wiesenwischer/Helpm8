@@ -32,8 +32,8 @@ runs:
         dotnet-version: |
           2.0.x
           2.1.x
+          4.7.1
           6.x
-          net47
     - name: Build
       shell: bash
       run: dotnet build ${{ inputs.project-path }} --configuration Release /p:Version=${{ 
