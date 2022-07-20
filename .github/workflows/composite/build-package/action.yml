@@ -20,7 +20,7 @@ inputs:
   publish:
     description: "Set to true to pack and push package"
     required: false
-    default: "false"
+    default: 'false'
 
 
 runs:
@@ -44,7 +44,7 @@ runs:
         cd nugets/
         dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ inputs.github-token }}
     - name: Upload packages
-      if: publish == 'true'
+      if: ${{ inputs.publish }} == 'true'
       uses: actions/upload-artifact@v3
       with:
         name: NuGet packages
