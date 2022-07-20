@@ -1,0 +1,14 @@
+name: Tests and coverage
+
+on:
+  # Manual trigger from the UI
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Run tests and publish code coverage'
+
+  # Dependency to a forking workflow
+  workflow_run:
+    workflows: ["Core CI"]
+    type:
+      - complete
