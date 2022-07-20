@@ -53,9 +53,14 @@ jobs:
           steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
-      - name: Run tests
+      - name: Run tests without coverage
+        if: matrix.name == 'Linux'
+        run: dotnet test src/libraries/Helpm8.Core.Tests --no-build  --configuration Release -v=normal
+      - name: Run tests with coverage
+        if: matrix.name == 'Windows'
         run: dotnet test src/libraries/Helpm8.Core.Tests --no-build  --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=/TestResults/Helpm8.Core.info /p:CoverletOutputFormat=lcov
       - name: Publish coverage report to coveralls.io
+        if: matrix.name == 'Windows'
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
