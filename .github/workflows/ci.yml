@@ -48,7 +48,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Build ${{ matrix.name }}
-        uses: .github/workflows/composite/build-package
+        uses: ./.github/workflows/composite/build-package
         with:
           project-path: src/libraries/Helpm8.Core
           assembly-version: $ {{ steps.gitversion.outputs.AssemblySemVer }}
