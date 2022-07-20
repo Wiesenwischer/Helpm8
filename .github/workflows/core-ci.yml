@@ -1,4 +1,5 @@
 name: Core CI
+
 on:
   push:
     branches:
@@ -8,8 +9,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+
 env:
   DOTNET_NOLOGO: true
+
 jobs:
   build:
     name: ${{ matrix.name }}
