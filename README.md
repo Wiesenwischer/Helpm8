@@ -1,4 +1,6 @@
 # Helpm8
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 An online help framework to implement runtime guidance to your apps.
 
 # Build Status (GitHub Actions)
