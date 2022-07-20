@@ -52,7 +52,7 @@ jobs:
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
       - name: Run tests
-        run: dotnet test src/libraries/Helpm8.Core.Tests -nobuild --configuration Release
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release
       - name: Pack and publish
         if: matrix.name == 'Windows'
         run: |
