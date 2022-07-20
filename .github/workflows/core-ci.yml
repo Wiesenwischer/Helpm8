@@ -55,22 +55,23 @@ jobs:
           steps.gitversion.outputs.InformationalVersion }} 
       - name: Run tests without coverage
         if: matrix.name == 'Linux'
-        run: dotnet test src/libraries/Helpm8.Core.Tests --no-build  --configuration Release -v=normal
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal
       - name: Run tests with coverage
         if: matrix.name == 'Windows'
-        run: dotnet test src/libraries/Helpm8.Core.Tests --no-build  --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=../TestResults/
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/
       - name: Publish coverage report to coveralls.io
         if: matrix.name == 'Windows'
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: src/libraries/TestResults/coverage.json
+          path-to-lcov: TestResults/coverage.json
       - name: Pack and publish
         if: matrix.name == 'Windows'
         run: |
           dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
           cd nugets/
           dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+          cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
