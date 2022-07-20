@@ -2,6 +2,7 @@ mode: Mainline
 branches:
   feature:
     tag: beta
-  main: {}
+  main: 
+    tag: pre
 ignore:
   sha: []
