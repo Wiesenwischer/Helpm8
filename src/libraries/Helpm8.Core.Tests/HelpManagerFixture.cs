@@ -954,6 +954,13 @@ namespace Helpm8.Core.Tests
             Assert.True(source2.LoadCalled);
         }
 
+        [Fact]
+        public void AddThrowsWhenHelpSourceIsNull()
+        {
+            var helpManager = new HelpManager();
+            Assert.Throws<ArgumentNullException>(() => (helpManager as IHelpBuilder).Add(null));
+        }
+
         private class TestableLoadCalledHelpProviderSource : IHelpSource
         {
             private readonly TestableLoadCalledHelpProvider _provider = new TestableLoadCalledHelpProvider();
