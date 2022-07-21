@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>netstandard20;netstandard21;net471;net472;net6.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
-		<RootNamespace>$(MSBuildProjectName.Replace(".Core", ""))</RootNamespace>
+		<RootNamespace>Helpm8</RootNamespace>
 		<RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<Authors>Marcus Dammann, Stefan Vogelsang</Authors>
@@ -29,6 +29,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 	  <PackageReference Include="System.Memory" Version="4.5.5" />
 	</ItemGroup>
 </Project>

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Helpm8.Core.Tests
 {
+    [ExcludeFromCodeCoverage]
     public class HelpKeyComparerFixture
     {
         [Fact]

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace Helpm8
 {
@@ -19,6 +19,7 @@ namespace Helpm8
         /// <param name="help">The help to enumerate.</param>
         /// <param name="makePathsRelative">If true, the child keys returned will have the current help's Path trimmed from the front.</param>
         /// <returns>An enumeration of key value pairs.</returns>
+        [PublicAPI]
         public static IEnumerable<KeyValuePair<string, string?>> AsEnumerable(this IHelp help, bool makePathsRelative)
         {
             var stack = new Stack<IHelp>();

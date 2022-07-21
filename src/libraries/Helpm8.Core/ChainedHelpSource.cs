@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Helpm8
+﻿namespace Helpm8
 {
     /// <summary>
     /// Represents a chained <see cref="IHelp"/> as an <see cref="IHelpSource"/>.

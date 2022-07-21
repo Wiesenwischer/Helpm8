@@ -40,6 +40,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Helpm8.Core.Tests\Helpm8.Core.Tests.csproj" />
 		<ProjectReference Include="..\Helpm8.Json\Helpm8.Json.csproj" />
 	</ItemGroup>
 

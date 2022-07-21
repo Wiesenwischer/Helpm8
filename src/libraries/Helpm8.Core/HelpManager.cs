@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Helpm8.InMemory;
 
 namespace Helpm8
@@ -12,7 +13,7 @@ namespace Helpm8
 
         public HelpManager()
         {
-            _sources = new HelpSources(this) 
+            _sources = new HelpSources(this)
             {
                 //Make sure there's some default storage since there are no default providers.
                 new InMemoryHelpSource()
@@ -77,7 +78,7 @@ namespace Helpm8
             provider.Load();
             _providerManager.AddProvider(provider);
         }
-        
+
         // Something other than Add was called on IHelpBuilder.Sources
         private void ReloadSources()
         {
@@ -96,6 +97,7 @@ namespace Helpm8
             _providerManager.ReplaceProviders(newProvidersList);
         }
 
+        [ExcludeFromCodeCoverage]
         private sealed class HelpSources : IList<IHelpSource>
         {
             private readonly List<IHelpSource> _sources = new List<IHelpSource>();
