@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Helpm8.Core.Tests
@@ -30,6 +31,34 @@ namespace Helpm8.Core.Tests
             section.Value = "TestForm-value";
 
             Assert.Equal("TestForm-value", helpRoot["TestForm"]);
+        }
+
+        [Fact]
+        public void CtorThrowsOnNulls()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                new HelpSection(null, string.Empty);
+            });
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                var builder = new HelpBuilder();
+                builder.AddInMemoryCollection();
+                var helpRoot = builder.Build();
+                new HelpSection(helpRoot, null);
+            });
+        }
+
+        [Fact]
+        public void ReturnsEmptyKeyWhenNotSet()
+        {
+            var builder = new HelpBuilder();
+            builder.AddInMemoryCollection();
+            var helpRoot = builder.Build();
+         
+            var section = new HelpSection(helpRoot, string.Empty);
+            
+            Assert.Empty(section.Key);
         }
     }
 }
