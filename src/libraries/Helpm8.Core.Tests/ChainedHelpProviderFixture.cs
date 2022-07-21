@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Helpm8.InMemory;
@@ -80,6 +81,63 @@ namespace Helpm8.Core.Tests
             var helpRoot = chainedHelpProvider.Help as IHelpRoot;
             // ReSharper disable once PossibleNullReferenceException
             Assert.Equal("bar-value", helpRoot["bar"]);
+        }
+
+        [Fact]
+        public void CtorThrowsOnNulls()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                new ChainedHelpProvider(null);
+            });
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                var source = new ChainedHelpSource();
+                new ChainedHelpProvider(source);
+            });
+        }
+
+        [Fact]
+        public void DisposesHelp()
+        {
+            var help = new TestableDisposeCalledHelp();
+            var source = new ChainedHelpSource();
+            source.ShouldDisposeHelp = true;
+            source.Help = help;
+            var chainedProvider = new ChainedHelpProvider(source);
+            
+            chainedProvider.Dispose();
+
+            Assert.True(help.DisposedCalled);
+        }
+
+        private class TestableDisposeCalledHelp : IHelp, IDisposable
+        {
+#pragma warning disable CS8632
+            public string? this[string key]
+#pragma warning restore CS8632
+            {
+                get => throw new NotImplementedException();
+                set => throw new NotImplementedException();
+            }
+
+            public IHelpSection GetSection(string key)
+            {
+                throw new NotImplementedException();
+            }
+
+            public IEnumerable<IHelpSection> GetChildren()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Dispose()
+            {
+                DisposedCalled = true;
+            }
+
+            public bool DisposedCalled { get; private set; }
         }
 
         private class TestHelpProvider : HelpProvider
