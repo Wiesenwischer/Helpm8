@@ -1,6 +1,7 @@
 ﻿using Helpm8.InMemory;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using Xunit;
 
 namespace Helpm8.Core.Tests
 {
+    [ExcludeFromCodeCoverage]
     public class HelpManagerFixture
     {
         [Fact]
@@ -934,6 +936,66 @@ namespace Helpm8.Core.Tests
             Assert.DoesNotContain(memHelpSrc2, help.Sources);
             Assert.Null(help["Mem1:KeyInMem1"]);
             Assert.Null(help["Mem2:KeyInMem2"]);
+        }
+
+        [Fact]
+        public void CallsLoadOnAllProvidersOnLoad()
+        {
+            var source1 = new TestableLoadCalledHelpProviderSource();
+            var source2 = new TestableLoadCalledHelpProviderSource();
+            var helpManager = new HelpManager();
+            var helpBuilder = helpManager as IHelpBuilder;
+            helpBuilder.Add(source1);
+            helpBuilder.Add(source2);
+            
+            helpBuilder.Build().Load();
+
+            Assert.True(source1.LoadCalled);
+            Assert.True(source2.LoadCalled);
+        }
+
+        private class TestableLoadCalledHelpProviderSource : IHelpSource
+        {
+            private readonly TestableLoadCalledHelpProvider _provider = new TestableLoadCalledHelpProvider();
+
+            public IHelpProvider Build(IHelpBuilder builder)
+            {
+                return _provider;
+            }
+
+            public bool LoadCalled => _provider.LoadCalled;
+        }
+
+        [ExcludeFromCodeCoverage]
+        private class TestableLoadCalledHelpProvider : IHelpProvider
+        {
+            public bool LoadCalled { get; private set; } = false;
+
+            public void Load()
+            {
+                LoadCalled = true;
+            }
+
+#pragma warning disable CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            public bool TryGet(string key, out string? value)
+#pragma warning restore CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            {
+                throw new NotImplementedException();
+            }
+
+#pragma warning disable CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            public void Set(string key, string? value)
+#pragma warning restore CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            {
+                throw new NotImplementedException();
+            }
+
+#pragma warning disable CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            public IEnumerable<string> GetChildKeys(IEnumerable<string> earlierKeys, string? parentPath)
+#pragma warning restore CS8632 // Die Anmerkung für Nullable-Verweistypen darf nur in Code innerhalb eines #nullable-Anmerkungskontexts verwendet werden.
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private static string Get(IHelpProvider provider, string key)

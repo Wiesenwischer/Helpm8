@@ -1,15 +1,26 @@
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Helpm8.Core.Tests
 {
+    [ExcludeFromCodeCoverage]
     public class HelpPathFixture
     {
         [Fact]
-        public void CombineWithEmptySegmentLeavesDelimiter()
+        public void CombineGivenParamsWithEmptySegmentLeavesDelimiter()
         {
             Assert.Equal("parent:", HelpPath.Combine("parent", ""));
             Assert.Equal("parent::", HelpPath.Combine("parent", "", ""));
             Assert.Equal("parent:::key", HelpPath.Combine("parent", "", "", "key"));
+        }
+
+        [Fact]
+        public void CombineGivenEnumerationWithEmptySegmentLeavesDelimiter()
+        {
+            Assert.Equal("parent:", HelpPath.Combine(new List<string> { "parent", ""}));
+            Assert.Equal("parent::", HelpPath.Combine(new List<string> { "parent", "", ""}));
+            Assert.Equal("parent:::key", HelpPath.Combine(new List<string> {"parent", "", "", "key"}));
         }
 
         [Fact]

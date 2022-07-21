@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Helpm8.InMemory;
 using Xunit;
 
 namespace Helpm8.Core.Tests
 {
+    [ExcludeFromCodeCoverage]
     public abstract class HelpProviderFixtureBase
     {
         [Fact]

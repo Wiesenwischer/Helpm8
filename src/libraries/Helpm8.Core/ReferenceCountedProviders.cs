@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace Helpm8
@@ -73,6 +74,7 @@ namespace Helpm8
             }
         }
 
+        [ExcludeFromCodeCoverage]
         private sealed class DisposedReferenceCountedProviders : ReferenceCountedProviders
         {
             public DisposedReferenceCountedProviders(List<IHelpProvider> providers)

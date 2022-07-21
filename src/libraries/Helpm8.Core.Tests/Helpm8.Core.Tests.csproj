@@ -34,7 +34,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Helpm8.Json\Helpm8.Json.csproj" />
+	  <ProjectReference Include="..\Helpm8.Core\Helpm8.Core.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Helpm8.InMemory;
 using Xunit;
 
 namespace Helpm8.Core.Tests
 {
+    [ExcludeFromCodeCoverage]
     public class ChainedHelpProviderFixture
     {
         [Fact]
@@ -54,6 +56,30 @@ namespace Helpm8.Core.Tests
             var helpRoot = chainedHelpProvider.Help as IHelpRoot;
             Assert.NotNull(helpRoot);
             Assert.Equal(providers, helpRoot.Providers);
+        }
+
+        [Fact]
+        public void CanSetValue()
+        {
+            var providers = new IHelpProvider[] {
+                new TestHelpProvider("foo", "foo-value")
+            };
+            var chainedHelpSource = new ChainedHelpSource
+            {
+                Help = new HelpRoot(providers),
+                ShouldDisposeHelp = false,
+            };
+
+            var chainedHelpProvider = chainedHelpSource
+                .Build(new HelpBuilder()) as ChainedHelpProvider;
+
+            // ReSharper disable once PossibleNullReferenceException
+            chainedHelpProvider.Set("bar", "bar-value");
+
+            // ReSharper disable once PossibleNullReferenceException
+            var helpRoot = chainedHelpProvider.Help as IHelpRoot;
+            // ReSharper disable once PossibleNullReferenceException
+            Assert.Equal("bar-value", helpRoot["bar"]);
         }
 
         private class TestHelpProvider : HelpProvider

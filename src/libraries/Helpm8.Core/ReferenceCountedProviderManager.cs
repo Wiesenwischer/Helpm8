@@ -9,8 +9,6 @@ namespace Helpm8
         private ReferenceCountedProviders _refCountedProviders = ReferenceCountedProviders.Create(new List<IHelpProvider>());
         private bool _disposed;
 
-        public IEnumerable<IHelpProvider> NonReferenceCountedProviders => _refCountedProviders.NonReferenceCountedProviders;
-
         public ReferenceCountedProviders GetReference()
         {
             // Lock to ensure oldRefCountedProviders.Dispose() in ReplaceProviders() or Dispose() doesn't decrement ref count to zero
