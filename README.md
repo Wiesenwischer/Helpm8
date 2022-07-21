@@ -1,6 +1,5 @@
 # Helpm8
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub version](https://badge.fury.io/gh/wiesenwischer%2Fhelpm8.svg)](https://badge.fury.io/gh/wiesenwischer%2Fhelpm8)
 
 An online help framework to implement runtime guidance to your apps.
 
