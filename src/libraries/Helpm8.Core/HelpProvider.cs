@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Helpm8
 {
@@ -94,6 +95,7 @@ namespace Helpm8
         /// Generates a string representing this provider name and relevant details.
         /// </summary>
         /// <returns> The help provider name. </returns>
+        [ExcludeFromCodeCoverage]
         public override string ToString() => $"{GetType().Name}";
     }
 }
