@@ -1,7 +1,5 @@
-tag-prefix: '[vV]'
-mode: Mainline
-branches:
-  feature:
-    tag: beta
+mode: ContinuousDelivery
+branches: {}
 ignore:
   sha: []
+merge-message-formats: {}
