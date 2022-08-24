@@ -1,10 +1,9 @@
-name: Json CI
+name: Json Release
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+     - "*"
     branches:
       - main
 
@@ -52,6 +51,13 @@ jobs:
           steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
+      - name: Pack and publish
+        if: matrix.name == 'Windows'
+        run: |
+          dotnet pack src/libraries/Helpm8.Json --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
+          cd nugets/
+          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+          cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
