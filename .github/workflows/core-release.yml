@@ -3,7 +3,7 @@ name: Core Release
 on:
   push:
     tags:
-      - "v*"
+      - '*'
 
 env:
   DOTNET_NOLOGO: true
