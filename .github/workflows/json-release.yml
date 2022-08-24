@@ -3,10 +3,8 @@ name: Json Release
 on:
   push:
     tags:
-     - "*"
-    branches:
-      - main
-
+      - "v*"
+      
 env:
   DOTNET_NOLOGO: true
 
