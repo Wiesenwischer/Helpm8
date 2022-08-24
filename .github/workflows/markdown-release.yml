@@ -1,0 +1,68 @@
+name: Markdown Release
+
+on:
+  push:
+    tags:
+      - "*"
+    branches:
+      - main
+      - build-markdown
+
+env:
+  DOTNET_NOLOGO: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            name: Windows
+          - os: ubuntu-20.04
+            name: Linux
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.13
+        with:
+          versionSpec: '5.x'            
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.13
+        with:
+          useConfigFile: true
+          configFilePath: ./.github/GitVersion.yml
+      - name: Display SemVer
+        run: |
+          echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"            
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with: 
+          dotnet-version: |
+            3.1.x
+            6.x      
+      - name: Build
+        run: dotnet build src/libraries/Helpm8.Wpf.Markdown --configuration Release  /p:Version=${{ 
+          steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
+          steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
+          steps.gitversion.outputs.InformationalVersion }} 
+      - name: Pack and publish
+        if: matrix.name == 'Windows'
+        run: |
+          dotnet pack src/libraries/Helpm8.Wpf.Markdown --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
+          cd nugets/
+          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+          cd -
+      - name: Upload packages
+        if: matrix.name == 'Windows'
+        uses: actions/upload-artifact@v3
+        with:
+          name: NuGet packages
+          path: nugets/
+          retention-days: 7
