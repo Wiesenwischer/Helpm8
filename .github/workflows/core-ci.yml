@@ -66,7 +66,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: TestResults/Helpm8.Core.info
       - name: Pack and publish
-        if: matrix.name == 'Windows'
+        if: (matrix.name == 'Windows') && (github.event_name != 'pull_request')
         run: |
           dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
           cd nugets/
