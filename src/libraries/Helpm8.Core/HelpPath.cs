@@ -20,8 +20,6 @@ namespace Helpm8
         /// <returns>The combined path.</returns>
         public static string Combine(params string[] pathSegments)
         {
-            if (pathSegments == null) throw new ArgumentNullException(nameof(pathSegments));
-
             return string.Join(KeyDelimiter, pathSegments);
         }
 
@@ -32,8 +30,6 @@ namespace Helpm8
         /// <returns>The combined path.</returns>
         public static string Combine(IEnumerable<string> pathSegments)
         {
-            if (pathSegments == null) throw new ArgumentNullException(nameof(pathSegments));
-
             return string.Join(KeyDelimiter, pathSegments);
         }
 

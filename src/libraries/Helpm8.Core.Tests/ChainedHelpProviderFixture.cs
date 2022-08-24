@@ -112,6 +112,39 @@ namespace Helpm8.Core.Tests
             Assert.True(help.DisposedCalled);
         }
 
+        [Fact]
+        public void DoesNotThrowWhenDisposing()
+        {
+            var help = new TestableNotDisposableHelp();
+            var source = new ChainedHelpSource();
+            source.ShouldDisposeHelp = true;
+            source.Help = help;
+            var chainedProvider = new ChainedHelpProvider(source);
+
+            chainedProvider.Dispose();
+        }
+
+        private class TestableNotDisposableHelp : IHelp
+        {
+#pragma warning disable CS8632
+            public string? this[string key]
+#pragma warning restore CS8632
+            {
+                get => throw new NotImplementedException();
+                set => throw new NotImplementedException();
+            }
+
+            public IHelpSection GetSection(string key)
+            {
+                throw new NotImplementedException();
+            }
+
+            public IEnumerable<IHelpSection> GetChildren()
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         private class TestableDisposeCalledHelp : IHelp, IDisposable
         {
 #pragma warning disable CS8632
