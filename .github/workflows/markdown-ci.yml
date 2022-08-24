@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - build-markdown
   pull_request:
     branches:
       - main
