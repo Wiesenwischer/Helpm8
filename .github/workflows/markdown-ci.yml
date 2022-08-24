@@ -1,10 +1,13 @@
-name: Json Release
+name: Markdown CI
 
 on:
   push:
-    tags:
-      - "v*"
-      
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 env:
   DOTNET_NOLOGO: true
 
@@ -17,8 +20,6 @@ jobs:
         include:
           - os: windows-latest
             name: Windows
-          - os: ubuntu-20.04
-            name: Linux
       fail-fast: false
     steps:
       - name: Checkout
@@ -40,22 +41,13 @@ jobs:
           echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"            
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
-        with: 
-          dotnet-version: |
-            3.1.x
-            6.x      
+        with:
+          dotnet-version: 6.x      
       - name: Build
-        run: dotnet build src/libraries/Helpm8.Json --configuration Release  /p:Version=${{ 
+        run: dotnet build src/libraries/Helpm8.Wpf.Markdown --configuration Release  /p:Version=${{ 
           steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
-      - name: Pack and publish
-        if: matrix.name == 'Windows'
-        run: |
-          dotnet pack src/libraries/Helpm8.Json --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
-          cd nugets/
-          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
-          cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3

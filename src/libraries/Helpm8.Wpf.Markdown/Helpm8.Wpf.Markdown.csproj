@@ -1,7 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
   <PropertyGroup>
-	  <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net471;net472;net48</TargetFrameworks>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RepositoryUrl>https://github.com/Wiesenwischer/Helpm8.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Authors>ams.Solution AG</Authors>
+    <Owners>Marcus Dammann, Stefan Vogelsang, René Viermann</Owners>
+    <Description>Adds Markdown support to Helpm8.</Description>
+    <Copyright>Copyright 2022</Copyright>
+    <ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyTitle>Helpm8.Wpf</AssemblyTitle>
+    <Company>ams.Solution AG</Company>
+    <Product>Helpm8.Wpf</Product>
+    <Copyright>Copyright 2022</Copyright>
     <UseWPF>true</UseWPF>
     <Configurations>Debug;Release;Debug.md</Configurations>
   </PropertyGroup>
