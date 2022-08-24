@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:helpm8 = "clr-namespace:Helpm8.Wpf;assembly=Helpm8.Wpf"
         xmlns:converters="clr-namespace:Helpm8WpfSample.Converters"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="225" Width="400">
+        Title="{Binding Title}" Height="255" Width="400">
     <Window.InputBindings>
         <KeyBinding 
              Key="F1"
@@ -34,16 +35,25 @@
         </StackPanel>
 
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1">
             <!-- Just a normal textbox which includes the helpm8Text -->
             <TextBox x:Name="SampleTextbox" Background="LightGray" Margin="5" Text="i'm only a textbox" Width="200" 
                      helpm8:HelpInfo.HelpKey="TextBoxHelp" />
 
             <!-- Just a normal checkbox which includes the helpm8Text -->
-            <CheckBox x:Name="SampleCheckBox" Margin="5"  HorizontalAlignment="Center" Content="just a simple checkbox" 
-                      helpm8:HelpInfo.HelpKey="CheckBoxHelp" />
+            <CheckBox x:Name="IncludeDefaultHelpCheckBox" Margin="5"  HorizontalAlignment="Stretch" 
+                      Content="Standard" 
+                      IsChecked="{Binding IncludeDefaultHelp}"
+                      helpm8:HelpInfo.HelpKey="IncludeDefaultCheckBoxHelp" 
+                      />
+            <CheckBox x:Name="IncludeCustomizedHelpCheckBox" Margin="5"  HorizontalAlignment="Stretch" 
+                      Content="Customized" 
+                      IsChecked="{Binding IncludeCustomizedHelp}"
+                      helpm8:HelpInfo.HelpKey="IncludeCustomizedCheckBoxHelp" 
+            />
 
-            <Button Content="Click me" helpm8:HelpInfo.HelpKey="ButtonHelp" Margin="5"></Button>
+            <Button Content="Click me" helpm8:HelpInfo.HelpKey="ButtonHelp"
+                    Margin="5"></Button>
         </StackPanel>
     </Grid>
 

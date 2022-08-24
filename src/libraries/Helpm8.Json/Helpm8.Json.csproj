@@ -12,6 +12,7 @@
 		<Copyright>Copyright 2022</Copyright>
 		<ProjectUrl>https://github.com/Wiesenwischer/Helpm8</ProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Configurations>Debug;Release;Debug.md</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>

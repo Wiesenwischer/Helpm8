@@ -1,10 +1,9 @@
-name: Json CI
+name: Core Release
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+      - "*"
     branches:
       - main
 
@@ -48,10 +47,29 @@ jobs:
             3.1.x
             6.x      
       - name: Build
-        run: dotnet build src/libraries/Helpm8.Json --configuration Release  /p:Version=${{ 
+        run: dotnet build src/libraries/Helpm8.Core --configuration Release  /p:Version=${{ 
           steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{
           steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{
           steps.gitversion.outputs.InformationalVersion }} 
+      - name: Run tests without coverage
+        if: matrix.name == 'Linux'
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal
+      - name: Run tests with coverage
+        if: matrix.name == 'Windows'
+        run: dotnet test src/libraries/Helpm8.Core.Tests --configuration Release -v=normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/Helpm8.Core.info /p:CoverletOutputFormat=lcov /p:Threshold=90
+      - name: Publish coverage report to coveralls.io
+        if: matrix.name == 'Windows'
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: TestResults/Helpm8.Core.info
+      - name: Pack and publish
+        if: matrix.name == 'Windows'
+        run: |
+          dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
+          cd nugets/
+          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+          cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3

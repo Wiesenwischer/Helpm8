@@ -1,5 +1,8 @@
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Helpm8.Wpf
 {
@@ -37,8 +40,14 @@ namespace Helpm8.Wpf
                 {
                     Inherits = true,
                     IsNotDataBindable = false,
-                    DefaultValue = null
+                    DefaultValue = null,
+                    SubPropertiesDoNotAffectRender = false,
+                    AffectsRender = true,
+                    DefaultUpdateSourceTrigger =UpdateSourceTrigger.PropertyChanged,
+                    PropertyChangedCallback = OnHelpContextChanged
                 });
+
+        public static event EventHandler<HelpTargetEventArgs> HelpTargetAvailable;
 
         private static void OnHelpKeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -48,7 +57,13 @@ namespace Helpm8.Wpf
             }
         }
 
-        public static event EventHandler<HelpTargetEventArgs> HelpTargetAvailable;
+        private static void OnHelpContextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is UIElement uiElement)
+            {
+                HelpTargetAvailable?.Invoke(null, new HelpTargetEventArgs(uiElement));
+            }
+        }
 
     }
 }

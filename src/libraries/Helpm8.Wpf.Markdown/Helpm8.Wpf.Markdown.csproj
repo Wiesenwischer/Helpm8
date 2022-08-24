@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+	  <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Debug.md</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GreenPipes" Version="4.0.1" />
+    <PackageReference Include="MdXaml" Version="1.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Helpm8.Wpf\Helpm8.Wpf.csproj" />
+  </ItemGroup>
+
+</Project>

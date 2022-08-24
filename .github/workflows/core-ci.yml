@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - add-helpm8-wpf-library
   pull_request:
     branches:
       - main
@@ -65,13 +64,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: TestResults/Helpm8.Core.info
-      - name: Pack and publish
-        if: matrix.name == 'Windows'
-        run: |
-          dotnet pack src/libraries/Helpm8.Core --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
-          cd nugets/
-          dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
-          cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
         uses: actions/upload-artifact@v3
