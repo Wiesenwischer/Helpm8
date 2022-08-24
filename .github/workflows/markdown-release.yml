@@ -3,7 +3,7 @@ name: Markdown Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 env:
   DOTNET_NOLOGO: true
