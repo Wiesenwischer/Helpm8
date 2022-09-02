@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using GreenPipes;
+using Helpm8.Wpf.Controls;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using GreenPipes;
-using Helpm8.Wpf.Controls;
 
 namespace Helpm8.Wpf
 {
@@ -42,7 +42,7 @@ namespace Helpm8.Wpf
             }
             else
             {
-                _popup.IsOpen = _hasActiveHelpRequest;
+                _popup.IsOpen = _hasActiveHelpRequest && HasHelpContent();
             }
             _observers.ForEach(x => x.IsHelpActive = _canShowHelp);
         }
@@ -98,7 +98,7 @@ namespace Helpm8.Wpf
             _popup.Child = hiControl;
             _popup.PlacementTarget = helpContext.Target;
             _popup.PopupAnimation = PopupAnimation.Slide;
-            _popup.IsOpen = true;
+            _popup.IsOpen = HasHelpContent();
         }
 
         protected virtual object CreatePopupContent(RequestHelpContext helpContext)
@@ -106,5 +106,10 @@ namespace Helpm8.Wpf
             return helpContext.HelpText;
         }
 
+        private bool HasHelpContent()
+        {
+            var control = (HelpInfoControl)_popup.Child;
+            return string.IsNullOrWhiteSpace(control.Content?.ToString()) == false;
+        }
     }
 }
