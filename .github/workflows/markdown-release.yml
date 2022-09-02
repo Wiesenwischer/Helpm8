@@ -55,6 +55,7 @@ jobs:
           dotnet pack src/libraries/Helpm8.Wpf.Markdown --configuration Release -o:nugets /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersion }}
           cd nugets/
           dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/wiesenwischer/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+          dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
           cd -
       - name: Upload packages
         if: matrix.name == 'Windows'
