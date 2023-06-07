@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="GreenPipes" Version="4.0.1" />
-    <PackageReference Include="MdXaml" Version="1.17.0" />
+    <PackageReference Include="MdXaml" Version="1.19.2" />
   </ItemGroup>
 
   <ItemGroup>
